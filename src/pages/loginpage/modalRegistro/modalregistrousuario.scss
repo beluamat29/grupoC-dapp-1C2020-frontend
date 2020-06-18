@@ -1,0 +1,143 @@
+@import "../../../../node_modules/bulma/bulma";
+
+.modal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+  .modal-card {
+    width: auto;
+    min-width: 50%;
+  }
+  .campo-a-rellenar {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    input {
+      width: fit-content;
+      height: 30px;
+      border-radius: 5px;
+      margin-top: 10px;
+      font-size: initial;
+    }
+    &.error {
+      input {
+        width: fit-content;
+        height: 30px;
+        border-radius: 5px;
+        margin-top: 10px;
+        font-size: initial;
+        border-color: #ff0020;
+      }
+    }
+
+
+    .horarios {
+      margin-top: 10px;
+      .seleccion-horario {
+        margin-bottom: 15px;
+      }
+      .botonera-horarios {
+        margin: 5px 0;
+
+        a {
+          margin-left: 5px;
+          color: #af9b00;
+        }
+      }
+      input {
+        height: 30px;
+        margin: 0 5px;
+      }
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      .rubro-checkbox {
+        display: flex;
+        align-items: center;
+
+        label {
+          font-size: smaller;
+        }
+
+        input {
+          margin: 0 3px;
+        }
+      }
+    }
+  }
+
+  .boton-modal {
+    background-color: #f4e04d;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    padding: 15px 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+  }
+
+  .boton-modal:hover {
+    background-color: #e5c902;
+  }
+
+  .modal-card-foot {
+    display: flex;
+    justify-content: space-between;
+
+    .registration-buttons {
+      width: 100%;
+      .registering-buttons {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .success-button {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  .modal-card-body {
+    display: flex;
+
+    &.success {
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+
+      .success-icon {
+        svg {
+          height: 75px;
+          width: 75px;
+          color: #93d42f;
+        }
+      }
+      .success-title {
+        font-size: x-large;
+      }
+
+      .success-subtitle {
+
+      }
+    }
+    .seccion-de-campos {
+      padding: 0 10px;
+      width: 50%;
+      .user-error {
+        color: #ff0020;
+        font-weight: 600;
+
+        svg{
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
