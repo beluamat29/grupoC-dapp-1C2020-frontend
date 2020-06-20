@@ -5,6 +5,7 @@ export const LanguageMaps =
         spanish: {
             sideBarStore: 'Comercios',
             categories: 'Rubros',
+            addProducts: 'Agregar Productos',
             discounts: 'Ofertas',
             seeMyCart: 'Ver mi carrito',
             logOut: 'Salir',
@@ -28,6 +29,7 @@ export const LanguageMaps =
         english: {
             sideBarStore: 'Stores',
             categories: 'Categories',
+            addProducts: 'Add Products',
             discounts: 'Discount',
             seeMyCart: 'My shopping cart',
             logOut: 'Log out',
