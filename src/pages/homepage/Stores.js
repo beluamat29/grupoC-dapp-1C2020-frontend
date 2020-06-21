@@ -6,7 +6,8 @@ import LoadingSpinner from "../../components/loading-spinner/LoadingSpinner";
 import Store from "./store/Store";
 import {LanguageContext} from "../../constants/LanguageMaps";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faStoreSlash} from "@fortawesome/free-solid-svg-icons/faStoreSlash";
+import {faStoreSlash, faSearch} from "@fortawesome/free-solid-svg-icons";
+
 
 class Stores extends React.Component {
     constructor(props){
@@ -25,12 +26,11 @@ class Stores extends React.Component {
     componentDidMount() {
         const params = new URLSearchParams(this.state.storeCategory);
         const category = params.get('category');
-        this.setState({ loadingEntitiesState: true });
+        this.setState({ loadingEntitiesState: true, category: category });
         this.showStores(category);
     }
 
     renderStore = (store) => <Store store={store}/>
-
 
     showStores = (category) =>{
         StoreService().getAllStores(category)
@@ -51,11 +51,27 @@ class Stores extends React.Component {
             });
     }
 
+    parseCategory = () => (this.context.storeCategories[this.state.category]).toLocaleLowerCase();
+
+    getStoresTitleText = () => !!this.state.category ? 'Estos son los comercios de la categoria ' + this.parseCategory(this.state.category) : 'Estos son nuestros comercios'
 
     render() {
         return(
             <div className="homepage">
                 <div className="entities-panel">
+                    {this.state.dataToShow &&
+                        <div className="stores-header-information-panel">
+                            <div className="stores-header-information">
+                                <div className="stores-header-title">
+                                    {this.getStoresTitleText()}
+                                </div>
+                                <div className="search-bar">
+                                    <input/>
+                                    <FontAwesomeIcon icon={faSearch}/>
+                                </div>
+                            </div>
+                        </div>
+                    }
                     {this.state.loadingEntitiesState && <LoadingSpinner isLoading={this.state.loadingEntitiesState}/>}
                     {!this.state.loadingEntitiesState && !this.state.showingShoppingCart && this.state.dataToShow &&
                         <div className="entities">
