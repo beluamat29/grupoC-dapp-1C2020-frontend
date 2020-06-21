@@ -7,13 +7,14 @@ import Store from "./store/Store";
 import {LanguageContext} from "../../constants/LanguageMaps";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStoreSlash, faSearch} from "@fortawesome/free-solid-svg-icons";
-
+import SearchBar from "../../components/search-bar/SearchBar";
 
 class Stores extends React.Component {
     constructor(props){
         super(props)
         this.state = {
             stores: [],
+            filteredStores: [],
             loadingEntitiesState: false,
             entityRenderFunction: this.renderStore,
             showingShoppingCart: false,
@@ -36,9 +37,10 @@ class Stores extends React.Component {
         StoreService().getAllStores(category)
             .then(result => {
                 if(result.data.length === 0){
-                    this.setState({stores: result.data, loadingEntitiesState: false, showingShoppingCart: false, dataToShow: false})
+                    this.setState({filteredStores: result.data, stores: result.data, loadingEntitiesState: false, showingShoppingCart: false, dataToShow: false})
                 }else {
                     this.setState({
+                        filteredStores: result.data,
                         stores: result.data,
                         loadingEntitiesState: false,
                         showingShoppingCart: false,
@@ -52,30 +54,22 @@ class Stores extends React.Component {
     }
 
     parseCategory = () => (this.context.storeCategories[this.state.category]).toLocaleLowerCase();
-
     getStoresTitleText = () => !!this.state.category ? 'Estos son los comercios de la categoria ' + this.parseCategory(this.state.category) : 'Estos son nuestros comercios'
+
+    updateEntitiesSearch = (filterText) => {
+        let filteredStoresWithText = this.state.stores.filter(store => store.storeName.includes(filterText))
+        this.setState({filteredStores: filteredStoresWithText})
+    }
 
     render() {
         return(
             <div className="homepage">
                 <div className="entities-panel">
-                    {this.state.dataToShow &&
-                        <div className="stores-header-information-panel">
-                            <div className="stores-header-information">
-                                <div className="stores-header-title">
-                                    {this.getStoresTitleText()}
-                                </div>
-                                <div className="search-bar">
-                                    <input/>
-                                    <FontAwesomeIcon icon={faSearch}/>
-                                </div>
-                            </div>
-                        </div>
-                    }
+                    {this.state.dataToShow && <SearchBar headerTitleText={this.getStoresTitleText()} updateSearch={this.updateEntitiesSearch}/>}
                     {this.state.loadingEntitiesState && <LoadingSpinner isLoading={this.state.loadingEntitiesState}/>}
                     {!this.state.loadingEntitiesState && !this.state.showingShoppingCart && this.state.dataToShow &&
                         <div className="entities">
-                            {this.state.stores.map(store => this.renderStore(store))}
+                            {this.state.filteredStores.map(store => this.renderStore(store))}
                         </div>
                     }
                     {!this.state.dataToShow && !this.state.loadingEntitiesState &&
