@@ -7,6 +7,20 @@
   margin: 40px;
   background-color: #fafba4;
 
+
+
+  .empty-cart {
+    background-color: #f4e04d;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    padding: 15px 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+  }
+
   .shopping-cart-title {
     width: 100%;
     flex-direction: column-reverse;
@@ -27,6 +41,10 @@
       align-self: flex-end;
       font-size: x-large;
       font-style: inherit;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
     }
 
     .product-in-cart {
