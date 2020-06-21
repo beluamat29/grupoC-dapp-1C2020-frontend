@@ -40,6 +40,7 @@ class ShoppingCart extends React.Component{
             {!this.cartIsEmpty() &&
             <div className="shopping-cart-content">
                 <div className="shopping-cart-total">
+                    <button className="empty-cart" onClick={this.props.emptyCart}>{this.context.emptyCart}</button>
                     <span>Total:  $ {this.calculateTotalPrice()}</span>
                 </div>
                 {this.renderProductsInCart()}

@@ -5,8 +5,10 @@ export const LanguageMaps =
         spanish: {
             sideBarStore: 'Comercios',
             categories: 'Rubros',
+            addProducts: 'Agregar Productos',
             discounts: 'Ofertas',
             seeMyCart: 'Ver mi carrito',
+            emptyCart: 'Vaciar Carrito',
             logOut: 'Salir',
             sideBarTitle: 'Busca tu producto',
             noProducts: '¡Ups! Parece que no hay productos en este comercio',
@@ -28,8 +30,10 @@ export const LanguageMaps =
         english: {
             sideBarStore: 'Stores',
             categories: 'Categories',
+            addProducts: 'Add Products',
             discounts: 'Discount',
             seeMyCart: 'My shopping cart',
+            empryCart: 'Empty Cart',
             logOut: 'Log out',
             sideBarTitle: 'Find your products',
             noProducts: 'Ups! Seems like there are no products in this store',

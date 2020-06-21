@@ -9,7 +9,6 @@ import {LanguageContext, LanguageMaps} from "./constants/LanguageMaps";
 import SideBar from "./pages/homepage/side-bar/SideBar";
 import StoreProducts from "./pages/homepage/store/StoreProducts";
 import ShoppingCart from "./pages/homepage/ShoppingCart/ShoppingCart";
-import Category from "./pages/homepage/category/Category";
 import Categories from "./pages/homepage/category/Categories";
 
 class App extends React.Component {
@@ -46,6 +45,8 @@ class App extends React.Component {
     }
 
     productIsInCart = (product) => this.state.productsInCart.some(productInCart => productInCart.id === product.id)
+
+    emptyCart = () => this.setState({productsInCart: []})
 
     logInUser = () => {
         this.setState({loggedUser: true})
@@ -93,6 +94,7 @@ class App extends React.Component {
                                                                removeFromCart={this.removeProductFromCart}
                                                                decreaseProductQuantity={this.decreaseProductQuantity}
                                                                increaseProductQuantity={this.increaseProductQuantity}
+                                                               emptyCart={this.emptyCart}
                                 />}
                             />
                             <Route
