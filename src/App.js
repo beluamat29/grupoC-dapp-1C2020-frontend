@@ -103,6 +103,8 @@ class App extends React.Component {
                                 render={props => <StoreProducts {...props}
                                                                 addProductToCart={this.addProductToCart}
                                                                 productIsInCart={this.productIsInCart}
+                                                                isStoreAdmin={this.state.loggedStoreAdmin}
+                                                                storeId={this.state.user.store.id}
                                 />}
                             />
                             <Route

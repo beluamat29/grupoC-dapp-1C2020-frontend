@@ -15,12 +15,13 @@ class StoreProducts extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            storeId: this.props.match.params.id,
+            storeId: parseInt(this.props.match.params.id),
             loadingEntitiesState: true
         }
     }
 
     componentDidMount() {
+        this.setState({user: this.props.user});
         this.showStoreProducts(this.state.storeId);
     }
 
@@ -56,13 +57,19 @@ class StoreProducts extends React.Component {
                         {this.state.products.map(product => this.renderProducts(product))}
                     </div>
                     }
+
                     {!this.state.dataToShow && !this.state.loadingEntitiesState &&
                         <div className="no-products">
                             <FontAwesomeIcon icon={faShoppingBasket}/>
-                            <span>{this.context.noProducts}</span>
+                            {this.props.isStoreAdmin && <span>{this.context.noOwnProducts}</span>}
+                            {!this.props.isStoreAdmin && <span>{this.context.noProducts}</span>}
                         </div>
                     }
+                    {this.props.storeId === this.state.storeId &&
+                    <button className="add-button">Agregar Producto</button>
+                    }
                 </div>
+
             </div>
         )
     }
