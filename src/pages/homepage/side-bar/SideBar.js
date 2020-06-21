@@ -37,7 +37,7 @@ class SideBar extends React.Component {
                         <a className="link-search" onClick={this.goToCategories}>{this.context.categories}</a>
                         <FontAwesomeIcon icon={faArrowCircleRight}/>
                     </div>
-                    {this.props.isStore &&
+                    {this.props.user.isStoreAdmin &&
                     <div className="link">
                         <a className="link-search" onClick={this.goToCategories}>{this.context.addProducts}</a>
                         <FontAwesomeIcon icon={faArrowCircleRight}/>

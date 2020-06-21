@@ -4,7 +4,6 @@ const EntitiesValidator = () => {
     }
 
     const validateStoreAdmin = (state) => {
-        debugger
         return !!state.storeName && !!state.address && !!state.username && !!state.password
             && !!state.rubros && !!state.openingDays && !!state.openingTime && !!state.closingTime && !!state.paymentMethods && !!state.deliveryDistance;
     }

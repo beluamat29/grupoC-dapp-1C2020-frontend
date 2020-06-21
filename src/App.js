@@ -17,7 +17,8 @@ class App extends React.Component {
         this.state = {
             loggedUser: JSON.parse(localStorage.getItem('loggedUser')) || false,
             language: LanguageMaps.spanish,
-            productsInCart: []
+            productsInCart:[],
+            user: {}
         }
     }
 
@@ -46,8 +47,8 @@ class App extends React.Component {
 
     productIsInCart = (product) => this.state.productsInCart.some(productInCart => productInCart.id === product.id)
 
-    logInUser = () => {
-        this.setState({loggedUser: true})
+    logInUser = (aUser) => {
+        this.setState({loggedUser: true, user: aUser})
         localStorage.setItem('loggedUser', true)
     }
     logOut = () => {
@@ -68,7 +69,10 @@ class App extends React.Component {
                     />
                     <LanguageContext.Provider value={this.state.language}>
                         <div className='encuarentena2'>
-                            <SideBar changeLanguage={this.changeLanguage} onLogout={this.logOut}/>
+                            <SideBar changeLanguage={this.changeLanguage}
+                                     onLogout={this.logOut}
+                                     user={this.state.user}
+                            />
                             <ProtectedRoute
                                 exact
                                 path='/stores'
