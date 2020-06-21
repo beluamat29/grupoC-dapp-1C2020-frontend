@@ -6,7 +6,8 @@ import LoadingSpinner from "../../components/loading-spinner/LoadingSpinner";
 import Store from "./store/Store";
 import {LanguageContext} from "../../constants/LanguageMaps";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faStoreSlash} from "@fortawesome/free-solid-svg-icons/faStoreSlash";
+import {faStoreSlash, faSearch} from "@fortawesome/free-solid-svg-icons";
+
 
 class Stores extends React.Component {
     constructor(props){
@@ -63,6 +64,10 @@ class Stores extends React.Component {
                             <div className="stores-header-information">
                                 <div className="stores-header-title">
                                     {this.getStoresTitleText()}
+                                </div>
+                                <div className="search-bar">
+                                    <input/>
+                                    <FontAwesomeIcon icon={faSearch}/>
                                 </div>
                             </div>
                         </div>
