@@ -61,6 +61,8 @@ class App extends React.Component {
 
     productIsInCart = (product) => this.state.productsInCart.some(productInCart => productInCart.id === product.id)
 
+    emptyCart = () => this.setState({productsInCart: []})
+
     logInUser = (aUser) => {
         this.setState({loggedUser: true, user: aUser})
         localStorage.setItem('loggedUser', true)
@@ -114,6 +116,7 @@ class App extends React.Component {
                                                                removeFromCart={this.removeProductFromCart}
                                                                decreaseProductQuantity={this.decreaseProductQuantity}
                                                                increaseProductQuantity={this.increaseProductQuantity}
+                                                               emptyCart={this.emptyCart}
                                 />}
                             />
                             <Route
@@ -122,6 +125,7 @@ class App extends React.Component {
                                 render={props => <Categories {...props}
                                 />}
                             />
+
 
                         </div>
                     </LanguageContext.Provider>
