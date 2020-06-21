@@ -16,6 +16,9 @@ class SideBar extends React.Component {
     goToStores = () => this.props.history.push('/stores')
     goToShoppingCart = () => this.props.history.push('/cart')
     goToCategories = () => this.props.history.push('/categories')
+    goToMyStore = () => this.props.history.push(`/stores/${this.props.user.store.id}/products`)
+
+
     logOut = () => {
         this.props.history.push('/')
         this.props.onLogout();
@@ -37,9 +40,9 @@ class SideBar extends React.Component {
                         <a className="link-search" onClick={this.goToCategories}>{this.context.categories}</a>
                         <FontAwesomeIcon icon={faArrowCircleRight}/>
                     </div>
-                    {this.props.user.isStoreAdmin &&
+                    {this.props.isStore &&
                     <div className="link">
-                        <a className="link-search" onClick={this.goToCategories}>{this.context.addProducts}</a>
+                        <a className="link-search" onClick={this.goToMyStore}>{this.context.addProducts}</a>
                         <FontAwesomeIcon icon={faArrowCircleRight}/>
                     </div>
                     }
