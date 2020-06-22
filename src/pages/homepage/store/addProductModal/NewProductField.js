@@ -1,4 +1,5 @@
 import * as React from "react";
+import {productCategories} from "../../../../constants/Constants";
 
 
 class NewProductField extends React.Component {
@@ -12,6 +13,18 @@ class NewProductField extends React.Component {
     updateAvailableStock = (number) => {
         this.setState({availableStock: Math.max(1, number)});
         this.props.onUpdate('stock', Math.max(1, number));
+    }
+
+    generateEntityCheckbox = (entity, onSelectEntity) => {
+        return (
+            //TODO: VER QUE SOLO SE PUEDA SELECCIONAR UNA CATEGORIA
+            <div className="rubro-checkbox">
+                <input type="checkbox" value={entity.value} onClick={(event) => onSelectEntity(event.target.value)}/>
+                <label className="checkbox">
+                    {entity.label}
+                </label>
+            </div>
+        )
     }
 
     render() {
@@ -48,9 +61,17 @@ class NewProductField extends React.Component {
                     </div>
                     <div className="campo-a-rellenar">
                         <label>
+                            Categoría
+                        </label>
+                        <div className="categories-grid">
+                            {productCategories.map(category => this.generateEntityCheckbox(category, this.props.onAddingCategory))}
+                        </div>
+                    </div>
+                    <div className="campo-a-rellenar">
+                        <label>
                             <span>URL de la imagen del producto</span>
                         </label>
-                        <input type="text" /*value={this.state.productImageURL}*/ id="productImageURL" name="productImageURL"
+                        <input type="text" value={this.state.productImageURL} id="productImageURL" name="productImageURL"
                                onChange={(event) => this.props.onUpdate('productImageURL', event.target.value)}/>
                     </div>
                 </div>

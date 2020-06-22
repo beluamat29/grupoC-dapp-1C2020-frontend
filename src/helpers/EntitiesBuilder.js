@@ -28,9 +28,22 @@ const EntitiesBuilder = () => {
         }
     }
 
+    const buildProduct = (state) => {
+        return {
+            productName: state.productName,
+            productBrand: state.productBrand,
+            productPrice: state.productPrice,
+            stock: state.stock || 1,
+            category: state.category,
+            productImageURL: state.productImageURL,
+            storeId: state.storeId
+        }
+    }
+
     return {
         buildClientUser: buildClientUser,
-        buildStoreAdmin: buildStoreAdmin
+        buildStoreAdmin: buildStoreAdmin,
+        buildProduct: buildProduct
     }
 }
 

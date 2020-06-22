@@ -12,10 +12,16 @@ const EntitiesValidator = () => {
         return /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(state.username);
     }
 
+    const validateProduct = (state) => {
+        return !!state.productName && !!state.productBrand && !!state.productPrice && !!state.stock && !!state.productImageURL
+            && !!state.category && !!state.storeId;
+    }
+
     return {
         validateClientUser: validateClientUser,
         validateStoreAdmin: validateStoreAdmin,
-        validateEmail: validateEmail
+        validateEmail: validateEmail,
+        validateProduct: validateProduct
     }
 }
 

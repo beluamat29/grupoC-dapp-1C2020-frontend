@@ -7,7 +7,7 @@ import Product from "../product/Product";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 import {LanguageContext} from "../../../constants/LanguageMaps";
-import AddProductModal from "./AddProductModal";
+import AddProductModal from "./addProductModal/AddProductModal";
 
 
 
@@ -75,7 +75,9 @@ class StoreProducts extends React.Component {
                             }
                         </div>
                     }
-                    {this.state.addProductModalOpen && <AddProductModal onClose={this.closeModal}/>}
+                    {this.state.addProductModalOpen && <AddProductModal onClose={this.closeModal}
+                                                                        storeId={this.state.storeId}
+                                                        />}
                 </div>
 
             </div>
