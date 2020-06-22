@@ -1,0 +1,68 @@
+.store-info-container {
+  height: 180px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .store-info {
+    width: 96%;
+    height: 150px;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+
+    .store-data {
+      width: 70%;
+      height: 100%;
+      margin: 5px 0 0 10px;
+
+      .store-name {
+        font-size: x-large;
+      }
+
+      .store-categories {
+        height: 18%;
+        color: coral;
+        svg {
+          margin-right: 2px;
+        }
+      }
+      .store-payment-methods{
+        height: 18%;
+        color: lightcoral;
+        svg {
+          margin-right: 2px;
+        }
+      }
+      .store-address {
+        height: 18%;
+        color: #e5c902;
+
+        svg {
+          height: 19px;
+          width: 19px;
+          margin-right: 2px;
+        }
+      }
+
+      .store-schedule {
+        height: 18%;
+        svg {
+          margin-right: 3px;
+        }
+      }
+    }
+
+    .store-image {
+      height: 100%;
+      width: 30%;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}

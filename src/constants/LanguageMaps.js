@@ -25,6 +25,20 @@ export const LanguageMaps =
                 'HYGIENE_PRODUCTS': 'Perfumeria',
                 'GROCERY': 'Almacen',
                 'BAKERY': 'Panaderia'
+            },
+            openingDays: {
+                'MONDAY': 'LUN',
+                'TUESDAY': 'MAR',
+                'WEDNESDAY': 'MIE',
+                'THURSDAY': 'JUE',
+                'FRIDAY': 'VIE',
+                'SATURDAY': 'SAT',
+                'SUNDAY': 'DOM'
+            },
+            paymentMethods: {
+                'Efectivo': 'Efectivo',
+                'Tarjeta de credito': 'Tarjeta de crédito',
+                'Tarjeta de debito': 'Tarjeta de débito'
             }
         },
         english: {
@@ -50,6 +64,20 @@ export const LanguageMaps =
                 'HYGIENE_PRODUCTS': 'Hygiene products',
                 'GROCERY': 'Grocery',
                 'BAKERY': 'Bakery'
+            },
+            openingDays: {
+                'MONDAY': 'MON',
+                'TUESDAY': 'TUE',
+                'WEDNESDAY': 'WED',
+                'THURSDAY': 'THU',
+                'FRIDAY': 'FRI',
+                'SATURDAY': 'SAT',
+                'SUNDAY': 'SUN'
+            },
+            paymentMethods: {
+                'Efectivo': 'Cash',
+                'Tarjeta de credito': 'Credit card',
+                'Tarjeta de debito': 'Debit card'
             }
         }
     }

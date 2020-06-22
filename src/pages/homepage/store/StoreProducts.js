@@ -7,6 +7,7 @@ import Product from "../product/Product";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 import {LanguageContext} from "../../../constants/LanguageMaps";
+import StoreInfo from "./store-info/StoreInfo";
 
 
 
@@ -49,6 +50,7 @@ class StoreProducts extends React.Component {
     render() {
         return(
             <div className="homepage">
+                {!this.state.loadingEntitiesState && <StoreInfo store={this.state.store}/>}
                 <div className="entities-panel">
                     {this.state.loadingEntitiesState && <LoadingSpinner isLoading={this.state.loadingEntitiesState}/>}
                     {!this.state.isLoading && this.state.dataToShow &&
