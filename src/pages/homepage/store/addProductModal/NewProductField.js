@@ -1,12 +1,14 @@
 import * as React from "react";
 import {productCategories} from "../../../../constants/Constants";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
 
 
 class NewProductField extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            availableStock: 1
+            availableStock: 0
         }
     }
 
@@ -35,22 +37,22 @@ class NewProductField extends React.Component {
                         <label>
                             Nombre
                         </label>
-                        <input type="text" id="productName" name="productName"
-                               onChange={(event) => this.props.onUpdate('productName', event.target.value)}/>
+                        <input type="text" id="name" name="name"
+                               onChange={(event) => this.props.onUpdate('name', event.target.value)}/>
                     </div>
                     <div className="campo-a-rellenar">
                         <label>
                             Marca
                         </label>
-                        <input type="text" id="productBrand" name="productBrand"
-                               onChange={(event) => this.props.onUpdate('productBrand', event.target.value)}/>
+                        <input type="text" id="brand" name="brand"
+                               onChange={(event) => this.props.onUpdate('brand', event.target.value)}/>
                     </div>
                     <div className="campo-a-rellenar">
                         <label>
                             Precio
                         </label>
-                        <input type="text" id="productPrice" name="productPrice"
-                               onChange={(event) => this.props.onUpdate('productPrice', event.target.value)}/>
+                        <input type="text" id="price" name="price"
+                               onChange={(event) => this.props.onUpdate('price', event.target.value)}/>
                     </div>
                     <div className="campo-a-rellenar">
                         <label>
@@ -59,6 +61,15 @@ class NewProductField extends React.Component {
                         <input type="number" value={this.state.availableStock} id="stock" name="stock"
                                onChange={(event) => this.updateAvailableStock(parseInt(event.target.value))}/>
                     </div>
+
+                    {!this.props.isValidProduct &&
+                    <div className="user-error">
+                        <FontAwesomeIcon icon={faExclamationTriangle}/>
+                        Hay campos sin completar.
+                    </div>}
+
+                </div>
+                    <div className="seccion-de-campos">
                     <div className="campo-a-rellenar">
                         <label>
                             Categoría

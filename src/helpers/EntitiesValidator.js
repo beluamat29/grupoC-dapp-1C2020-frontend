@@ -13,8 +13,8 @@ const EntitiesValidator = () => {
     }
 
     const validateProduct = (state) => {
-        return !!state.productName && !!state.productBrand && !!state.productPrice && !!state.stock && !!state.productImageURL
-            && !!state.category && !!state.storeId;
+        return !!state.name && !!state.brand && !!state.price && !!state.stock && !!state.productImageURL
+            && !!state.category;
     }
 
     return {

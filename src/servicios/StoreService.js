@@ -24,9 +24,9 @@ const StoreService = () => {
 
     const addProductOnStore = (product) => {
         const body = {
-            productName: product.productName,
-            productBrand: product.productBrand,
-            productPrice: product.productPrice,
+            name: product.name,
+            brand: product.brand,
+            price: product.price,
             stock: product.stock,
             category: product.category,
             productImageURL: product.productImageURL,

@@ -10,7 +10,9 @@ class AddProductModal extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            additionSucceed: false
+            additionSucceed: false,
+            isValidProduct: true,
+            storeId: this.props.storeId
         }
     }
 
@@ -49,9 +51,11 @@ class AddProductModal extends React.Component{
                         <p className="modal-card-title">Nuevo Producto</p>
                         <button className="delete" aria-label="close" onClick={this.props.onClose}/>
                     </header>
-                    {
+                    {!this.state.additionSucceed &&
                     <NewProductField onUpdate={this.updateForm}
-                                     onAddingCategory={this.addCategory}/>}
+                                     onAddingCategory={this.addCategory}
+                                     isValidProduct={this.state.isValidProduct}
+                    />}
 
                     {this.state.additionSucceed && <AdditionSucceed/>}
                     <footer className="modal-card-foot">

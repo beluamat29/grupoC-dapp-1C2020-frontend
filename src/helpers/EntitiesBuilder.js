@@ -30,10 +30,10 @@ const EntitiesBuilder = () => {
 
     const buildProduct = (state) => {
         return {
-            productName: state.productName,
-            productBrand: state.productBrand,
-            productPrice: state.productPrice,
-            stock: state.stock || 1,
+            name: state.name,
+            brand: state.brand,
+            price: state.price,
+            stock: state.stock || 0,
             category: state.category,
             productImageURL: state.productImageURL,
             storeId: state.storeId

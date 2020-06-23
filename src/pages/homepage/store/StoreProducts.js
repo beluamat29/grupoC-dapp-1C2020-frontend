@@ -69,17 +69,17 @@ class StoreProducts extends React.Component {
                             <FontAwesomeIcon icon={faShoppingBasket}/>
                             {this.props.isStoreAdmin && <span>{this.context.noOwnProducts}</span>}
                             {!this.props.isStoreAdmin && <span>{this.context.noProducts}</span>}
-                            {this.props.storeId === this.state.storeId &&
-                            <button className="add-button"
-                                    onClick={() => this.setState({addProductModalOpen: true})}>Agregar Producto</button>
-                            }
+
                         </div>
                     }
-                    {this.state.addProductModalOpen && <AddProductModal onClose={this.closeModal}
-                                                                        storeId={this.state.storeId}
-                                                        />}
+                    {this.props.storeId === this.state.storeId &&
+                    <button className="add-button"
+                            onClick={() => this.setState({addProductModalOpen: true})}>Agregar Producto</button>
+                    }
                 </div>
-
+                {this.state.addProductModalOpen && <AddProductModal onClose={this.closeModal}
+                                                                    storeId={this.state.storeId}
+                />}
             </div>
         )
     }

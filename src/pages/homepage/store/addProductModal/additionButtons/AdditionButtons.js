@@ -1,11 +1,10 @@
 import * as React from "react";
 
 class AdditionButtons extends React.Component {
-
     render() {
         return(
             <div className="registration-buttons">
-                {!this.props.registrationSucceed &&
+                {!this.props.additionSucceed &&
                 <div className="registering-buttons">
                     <button className="boton-modal" onClick={this.props.addProduct}>Agregar Producto</button>
                 </div>
