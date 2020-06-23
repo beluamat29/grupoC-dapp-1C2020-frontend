@@ -24,7 +24,7 @@ class Product extends React.Component {
     render() {
         return (<div className="entity-card product-card">
             <div className="product-button">
-                {!this.props.productIsInCart(this.props.product) &&
+                {!this.props.productIsInCart(this.props.product) && !this.props.isAdminOfStore &&
                 <div className="add-to-cart-button">
                     <button onClick={this.addProductToCart}>
                         <FontAwesomeIcon icon={faShoppingCart}/>

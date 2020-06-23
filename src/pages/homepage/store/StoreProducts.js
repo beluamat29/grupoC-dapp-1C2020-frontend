@@ -8,6 +8,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 import {LanguageContext} from "../../../constants/LanguageMaps";
 import AddProductModal from "./addProductModal/AddProductModal";
+import StoreInfo from "./store-info/StoreInfo";
 
 
 
@@ -18,13 +19,17 @@ class StoreProducts extends React.Component {
         this.state = {
             storeId: parseInt(this.props.match.params.id),
             loadingEntitiesState: true,
-            addProductModalOpen: false
+            addProductModalOpen: false,
+            isAdminOfStore: false
         }
     }
 
     componentDidMount() {
         this.setState({user: this.props.user});
         this.showStoreProducts(this.state.storeId);
+        if(this.props.storeId === this.state.storeId){
+            this.setState({isAdminOfStore: true})
+        }
     }
 
     showStoreProducts = (storeId) => {
@@ -47,7 +52,7 @@ class StoreProducts extends React.Component {
         })
     }
 
-    renderProducts = (product) => <Product product={product} productIsInCart={this.props.productIsInCart} onAddToCart={this.props.addProductToCart} onRemoveFromCart={this.removeFromCart}/>
+    renderProducts = (product) => <Product product={product} productIsInCart={this.props.productIsInCart} onAddToCart={this.props.addProductToCart} onRemoveFromCart={this.removeFromCart} isAdminOfStore={this.state.isAdminOfStore}/>
 
     closeModal = () => {
         this.setState({addProductModalOpen: false})
@@ -56,6 +61,7 @@ class StoreProducts extends React.Component {
     render() {
         return(
             <div className="homepage">
+                {!this.state.loadingEntitiesState && <StoreInfo store={this.state.store}/>}
                 <div className="entities-panel">
                     {this.state.loadingEntitiesState && <LoadingSpinner isLoading={this.state.loadingEntitiesState}/>}
                     {!this.state.isLoading && this.state.dataToShow &&
@@ -72,13 +78,15 @@ class StoreProducts extends React.Component {
 
                         </div>
                     }
-                    {this.props.storeId === this.state.storeId &&
+                    {this.state.isAdminOfStore &&
                     <button className="add-button"
                             onClick={() => this.setState({addProductModalOpen: true})}>Agregar Producto</button>
                     }
                 </div>
                 {this.state.addProductModalOpen && <AddProductModal onClose={this.closeModal}
                                                                     storeId={this.state.storeId}
+                                                                    renderProducts={this.renderProducts}
+                                                                    isAdminOfStore={this.state.isAdminOfStore}
                 />}
             </div>
         )
