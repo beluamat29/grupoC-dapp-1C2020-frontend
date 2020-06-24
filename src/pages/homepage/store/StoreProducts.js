@@ -28,7 +28,6 @@ class StoreProducts extends React.Component {
         this.setState({user: this.props.user});
         this.showStoreProducts(this.state.storeId);
         if(this.props.storeId === this.state.storeId){
-            debugger
             this.setState({isAdminOfStore: true})
         }
     }
