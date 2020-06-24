@@ -19,7 +19,8 @@ class App extends React.Component {
             loggedUser: JSON.parse(localStorage.getItem('loggedUser')) || false,
             language: LanguageMaps.spanish,
             productsInCart: [],
-            userId: JSON.parse(localStorage.getItem('userId')) || false
+            userId: JSON.parse(localStorage.getItem('userId')) || false,
+            storeId: JSON.parse(localStorage.getItem('storeId')) || false
         }
     }
 
@@ -67,6 +68,9 @@ class App extends React.Component {
         this.setState({loggedUser: true, user: aUser})
         localStorage.setItem('loggedUser', true)
         localStorage.setItem('userId', aUser.id);
+        if(aUser.isAdminOfStore){
+            localStorage.setItem('storeId', aUser.store.id)
+        }
     }
     logOut = () => {
         this.setState({loggedUser: false})
@@ -106,7 +110,8 @@ class App extends React.Component {
                                                                 addProductToCart={this.addProductToCart}
                                                                 productIsInCart={this.productIsInCart}
                                                                 isStoreAdmin={this.state.loggedStoreAdmin}
-                                                                storeId={this.state.user.store.id}
+                                                                storeId={this.state.storeId}
+                                                                user={this.state.user}
                                 />}
                             />
                             <Route
