@@ -68,7 +68,7 @@ class App extends React.Component {
         this.setState({loggedUser: true, user: aUser})
         localStorage.setItem('loggedUser', true)
         localStorage.setItem('userId', aUser.id);
-        if(aUser.isAdminOfStore){
+        if(aUser.isStoreAdmin){
             localStorage.setItem('storeId', aUser.store.id)
         }
     }
