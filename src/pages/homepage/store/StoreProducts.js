@@ -52,7 +52,7 @@ class StoreProducts extends React.Component {
         })
     }
 
-    renderProducts = (product) => <Product product={product} productIsInCart={this.props.productIsInCart} onAddToCart={this.props.addProductToCart} onRemoveFromCart={this.removeFromCart} isAdminOfStore={this.state.isAdminOfStore}/>
+    renderProducts = (product) => <Product product={product} productIsInCart={this.props.productIsInCart} onAddToCart={this.props.addProductToCart} onRemoveFromCart={this.removeFromCart} isStoreAdmin={this.props.isStoreAdmin}/>
 
     closeModal = () => {
         this.setState({addProductModalOpen: false})
@@ -85,7 +85,7 @@ class StoreProducts extends React.Component {
                 </div>
                 {this.state.addProductModalOpen && <AddProductModal onClose={this.closeModal}
                                                                     storeId={this.state.storeId}
-                                                                        renderProducts={this.renderProducts}
+                                                                    renderProducts={this.renderProducts}
                                                                     isAdminOfStore={this.state.isAdminOfStore}
                 />}
             </div>

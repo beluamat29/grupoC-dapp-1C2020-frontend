@@ -50,10 +50,11 @@ class SideBar extends React.Component {
                         <a className="link-search" onClick={this.props.showDiscounts}>{this.context.discounts}</a>
                         <FontAwesomeIcon icon={faArrowCircleRight}/>
                     </div>*/}
+                    {!this.props.isStore &&
                     <div className="link">
                         <a className="link-search" onClick={this.goToShoppingCart}>{this.context.seeMyCart}</a>
                         <FontAwesomeIcon icon={faShoppingCart}/>
-                    </div>
+                    </div>}
                     <div className="link">
                         <a className="link-search" onClick={this.logOut}>{this.context.logOut}</a>
                         <FontAwesomeIcon onClick={this.logOut} icon={faDoorOpen}/>
