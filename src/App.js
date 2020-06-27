@@ -11,6 +11,7 @@ import StoreProducts from "./pages/homepage/store/StoreProducts";
 import ShoppingCart from "./pages/homepage/ShoppingCart/ShoppingCart";
 import Categories from "./pages/homepage/category/Categories";
 import LoginService from "./servicios/LoginService";
+import UserProfile from "./pages/user-profile/UserProfile";
 
 class App extends React.Component {
     constructor(props) {
@@ -130,6 +131,11 @@ class App extends React.Component {
                                 path='/categories'
                                 render={props => <Categories {...props}
                                 />}
+                            />
+                            <Route
+                                exact
+                                path="/users/:id"
+                                render={props => <UserProfile {...props} user={this.state.user}/>}
                             />
 
 

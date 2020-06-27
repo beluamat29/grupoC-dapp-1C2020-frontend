@@ -1,0 +1,131 @@
+.user-profile-page {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafba4;
+  min-height: -webkit-fill-available;
+
+  .user-profile-header-panel {
+    width: 100%;
+    height: 20%;
+    padding: 20px 20px;
+
+    .user-profile-header-title {
+      font-size: xx-large;
+    }
+  }
+
+  .user-profile-data-panel {
+    width: 100%;
+    height: 10%;
+    padding: 0 20px;
+
+    .user-profile-data-container {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      background-color: white;
+      border-radius: 5px;
+
+      .user-profile-data-input{
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        label {
+          margin-right: 5px;
+        }
+
+        input {
+          height: 30px;
+          border-radius: 5px;
+        }
+      }
+
+      .user-profile-data-save-button {
+        width: 10%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .save-button {
+          background-color: #f4e04d;
+          border: none;
+          border-radius: 5px;
+          color: black;
+          padding: 15px 5px;
+          text-align: center;
+          display: inline-block;
+          font-size: 16px;
+          transition-duration: 0.4s;
+
+          &.disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+
+  .modal {
+    .modal-card {
+      .modal-card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .modal-card-body-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          label {
+            margin: 5px 0;
+          }
+
+          input {
+            height: 30px;
+            border-radius: 5px;
+          }
+
+          .failed-icon {
+            svg {
+              height: 75px;
+              width: 75px;
+              color: #ff0020;
+            }
+          }
+
+          .success-icon {
+            svg {
+              height: 75px;
+              width: 75px;
+              color: #93d42f;
+            }
+          }
+        }
+      }
+      .modal-card-foot {
+        display: flex;
+        justify-content: center;
+      }
+      .update-user-button{
+        background-color: #f4e04d;
+        border: none;
+        border-radius: 5px;
+        color: black;
+        padding: 15px 5px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+        transition-duration: 0.4s;
+      }
+    }
+  }
+}

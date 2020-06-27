@@ -1,7 +1,7 @@
 import * as React from "react";
 import {withRouter} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowCircleRight, faShoppingCart, faDoorOpen} from "@fortawesome/free-solid-svg-icons";
+import {faArrowCircleRight, faShoppingCart, faDoorOpen, faUser} from "@fortawesome/free-solid-svg-icons";
 import "./side-bar.scss"
 import {LanguageContext, LanguageMaps} from "../../../constants/LanguageMaps";
 import english from '../../loginpage/imagenes-home-page/english.png';
@@ -17,6 +17,7 @@ class SideBar extends React.Component {
     goToShoppingCart = () => this.props.history.push('/cart')
     goToCategories = () => this.props.history.push('/categories')
     goToMyStore = () => this.props.history.push(`/stores/${this.props.user.store.id}/products`)
+    goToUserProfile = () => this.props.history.push(`/users/${this.props.user.id}`)
 
 
     logOut = () => {
@@ -55,6 +56,10 @@ class SideBar extends React.Component {
                         <a className="link-search" onClick={this.goToShoppingCart}>{this.context.seeMyCart}</a>
                         <FontAwesomeIcon icon={faShoppingCart}/>
                     </div>}
+                    <div className="link">
+                        <a className="link-search" onClick={this.goToUserProfile}>{this.context.seeMyProfile}</a>
+                        <FontAwesomeIcon icon={faUser}/>
+                    </div>
                     <div className="link">
                         <a className="link-search" onClick={this.logOut}>{this.context.logOut}</a>
                         <FontAwesomeIcon onClick={this.logOut} icon={faDoorOpen}/>
