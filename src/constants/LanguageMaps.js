@@ -27,7 +27,7 @@ export const LanguageMaps =
             userProfilePassword: 'Contraseña:',
             userProfileSave: 'Guardar',
             confirmUserUpdateTitle: 'Confirmación de cambios en el perfil',
-            confirmUserUpdateText: 'Por favor, ingresa tu contraseña para poder actualizar tu perfil',
+            confirmUserUpdateText: 'Por favor, ingresa tu contraseña actual para poder actualizar tu perfil',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Limpieza',
                 'BUTCHER': 'Carniceria',
@@ -76,7 +76,7 @@ export const LanguageMaps =
             userProfilePassword: 'Password:',
             userProfileSave: 'Save',
             confirmUserUpdateTitle: 'Profile update confirmation',
-            confirmUserUpdateText: 'Please, enter your password to update your profile data',
+            confirmUserUpdateText: 'Please, enter your current password to update your profile data',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Cleaning supplies',
                 'BUTCHER': 'Butchers',

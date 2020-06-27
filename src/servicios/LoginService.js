@@ -25,11 +25,16 @@ const LoginService = () => {
         return axios.get(`${SERVICE_URL}users/${id}`)
     }
 
+    const updateUser = (user) => {
+        return axios.put(`${SERVICE_URL}users/${user.id}`, user)
+    }
+
     return {
         validateUser: validateUser,
         registerUser: registerUser,
         registerStoreUser: registerStoreUser,
-        getUserById: getUserById
+        getUserById: getUserById,
+        updateUser: updateUser
     }
 }
 

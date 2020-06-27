@@ -15,9 +15,11 @@ class UpdateUserConfirmation extends React.Component {
     validateAndUpdateUser = () => {
         LoginService().validateUser({username: this.props.user.username, password: this.state.passwordToConfirm})
             .then(response => {
-                console.log('todo piola')
+                LoginService().updateUser(this.props.user)
+                    .then(response => console.log('se actualizo piola'))
+                    .catch(error => console.log(error))
             })
-            .catch( error => {
+            .catch(() => {
                 alert("El nombre de usuario o la contraseña no son correctos")
             })
     }
@@ -38,7 +40,7 @@ class UpdateUserConfirmation extends React.Component {
                     <div className="modal-card-body">
                         {this.context.confirmUserUpdateText}
                         <label>{this.context.userProfilePassword}</label>
-                        <input type="text" value={this.state.passwordToConfirm} onChange={(event) => this.updatePasswordToConfirm(event.target.value)}/>
+                        <input type="password" value={this.state.passwordToConfirm} onChange={(event) => this.updatePasswordToConfirm(event.target.value)}/>
                     </div>
                     <footer className="modal-card-foot">
                         <button className="update-user-button" onClick={this.validateAndUpdateUser}>{this.context.userProfileSave}</button>
