@@ -2,23 +2,31 @@ import * as React from "react";
 import "./user-profile.scss"
 import {LanguageContext} from "../../constants/LanguageMaps";
 import {withRouter} from "react-router-dom";
+import LoginService from "../../servicios/LoginService";
+import LoadingSpinner from "../../components/loading-spinner/LoadingSpinner";
 
 class UserProfile extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            user: {}
+            user: {},
+            loadingUser: true
         }
     }
 
     componentDidMount() {
-        this.setState({user: this.props.user})
+        this.setState({loadingUser: true})
+        const userId = this.props.match.params.id;
+        LoginService().getUserById(userId)
+            .then(response => this.setState({user: response.data, loadingUser: false}))
+            .catch(error => console.log(error))
     }
 
     render() {
         return(
             <div className="user-profile-page">
+                {this.state.loadingUser && <LoadingSpinner isLoading={this.state.loadingUser}/>}
                 <div className="user-profile-header-panel">
                     <div className="user-profile-header-title">
                         <span>{this.context.welcomeToProfile}</span>
@@ -27,11 +35,12 @@ class UserProfile extends React.Component {
                         <span>{this.context.profileSubtitle}</span>
                     </div>
                 </div>
+                {!this.state.loadingUser &&
                 <div className="user-profile-data-panel">
                    <div className="user-profile-data-container">
                         <div className="user-profile-data-input">
                             <label>{this.context.userProfileUsername}</label>
-                            <span>{this.props.user.username}</span>
+                            <span>{this.state.user.username}</span>
                         </div>
                        <div className="user-profile-data-input">
                            <label>{this.context.userProfileAddress}</label>
@@ -45,7 +54,7 @@ class UserProfile extends React.Component {
                            <button className="save-button" onClick={this.loginUser}>{this.context.userProfileSave}</button>
                        </div>
                    </div>
-                </div>
+                </div>}
             </div>
         )
     }
