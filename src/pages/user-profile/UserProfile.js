@@ -4,6 +4,7 @@ import {LanguageContext} from "../../constants/LanguageMaps";
 import {withRouter} from "react-router-dom";
 import LoginService from "../../servicios/LoginService";
 import LoadingSpinner from "../../components/loading-spinner/LoadingSpinner";
+import UpdateUserConfirmation from "./UpdateUserConfirmation";
 
 class UserProfile extends React.Component {
 
@@ -11,7 +12,8 @@ class UserProfile extends React.Component {
         super(props);
         this.state = {
             user: {},
-            loadingUser: true
+            loadingUser: true,
+            updateConfirmationModalOpen: false
         }
     }
 
@@ -21,6 +23,13 @@ class UserProfile extends React.Component {
         LoginService().getUserById(userId)
             .then(response => this.setState({user: response.data, loadingUser: false}))
             .catch(error => console.log(error))
+    }
+
+    openUpdateUserConfirmationModal = () => this.setState({updateConfirmationModalOpen: true})
+    updateUserField = (fieldName, newValue) => {
+        const updatedUser = this.state.user
+        updatedUser[fieldName] = newValue
+        this.setState({user: updatedUser})
     }
 
     render() {
@@ -44,17 +53,23 @@ class UserProfile extends React.Component {
                         </div>
                        <div className="user-profile-data-input">
                            <label>{this.context.userProfileAddress}</label>
-                           <input type="text" id="user-address" name="user-address" value={this.state.user.address}/>
+                           <input type="text" id="user-address" name="user-address"
+                                  value={this.state.user.address}
+                                  onChange={(event) => this.updateUserField('address', event.target.value)}
+                           />
                        </div>
                        <div className="user-profile-data-input">
                            <label>{this.context.userProfilePassword}</label>
-                           <input type="password" id="user-password" name="user-password" value={this.state.user.password}/>
+                           <input type="password" id="user-password" name="user-password"
+                                  value={this.state.user.password}
+                                  onChange={(event) => this.updateUserField('password', event.target.value)}/>
                        </div>
                        <div className="user-profile-data-save-button">
-                           <button className="save-button" onClick={this.loginUser}>{this.context.userProfileSave}</button>
+                           <button className="save-button" onClick={this.openUpdateUserConfirmationModal}>{this.context.userProfileSave}</button>
                        </div>
                    </div>
                 </div>}
+                {this.state.updateConfirmationModalOpen && <UpdateUserConfirmation/>}
             </div>
         )
     }
