@@ -4,7 +4,6 @@ const EntitiesValidator = () => {
     }
 
     const validateStoreAdmin = (state) => {
-        debugger
         return !!state.storeName && !!state.address && !!state.username && !!state.password
             && !!state.rubros && !!state.openingDays && !!state.openingTime && !!state.closingTime && !!state.paymentMethods && !!state.deliveryDistance;
     }
@@ -13,10 +12,16 @@ const EntitiesValidator = () => {
         return /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(state.username);
     }
 
+    const validateProduct = (state) => {
+        return !!state.name && !!state.brand && !!state.price && !!state.stock && !!state.productImageURL
+            && !!state.category;
+    }
+
     return {
         validateClientUser: validateClientUser,
         validateStoreAdmin: validateStoreAdmin,
-        validateEmail: validateEmail
+        validateEmail: validateEmail,
+        validateProduct: validateProduct
     }
 }
 

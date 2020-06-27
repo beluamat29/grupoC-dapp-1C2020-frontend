@@ -10,6 +10,7 @@ import SideBar from "./pages/homepage/side-bar/SideBar";
 import StoreProducts from "./pages/homepage/store/StoreProducts";
 import ShoppingCart from "./pages/homepage/ShoppingCart/ShoppingCart";
 import Categories from "./pages/homepage/category/Categories";
+import LoginService from "./servicios/LoginService";
 
 class App extends React.Component {
     constructor(props) {
@@ -17,7 +18,22 @@ class App extends React.Component {
         this.state = {
             loggedUser: JSON.parse(localStorage.getItem('loggedUser')) || false,
             language: LanguageMaps.spanish,
-            productsInCart: []
+            productsInCart: [],
+            userId: JSON.parse(localStorage.getItem('userId')) || false,
+            storeId: JSON.parse(localStorage.getItem('storeId')) || false
+        }
+    }
+
+    componentDidMount() {
+        if(!!this.state.userId){
+            LoginService().getUserById(this.state.userId)
+                .then(response =>{
+                    this.setState({loggedStoreAdmin: response.data.isStoreAdmin, user: response.data});
+                    localStorage.setItem('isStoreAdmin', response.data.isStoreAdmin);
+                })
+                .catch(error =>{
+                    alert("User not found")
+                })
         }
     }
 
@@ -48,9 +64,14 @@ class App extends React.Component {
 
     emptyCart = () => this.setState({productsInCart: []})
 
-    logInUser = () => {
-        this.setState({loggedUser: true})
+    logInUser = (aUser) => {
+        this.setState({loggedUser: true, user: aUser})
         localStorage.setItem('loggedUser', true)
+        localStorage.setItem('userId', aUser.id);
+        if(aUser.isStoreAdmin){
+            this.setState({loggedStoreAdmin: true})
+            localStorage.setItem('storeId', aUser.store.id)
+        }
     }
     logOut = () => {
         this.setState({loggedUser: false})
@@ -70,7 +91,11 @@ class App extends React.Component {
                     />
                     <LanguageContext.Provider value={this.state.language}>
                         <div className='encuarentena2'>
-                            <SideBar changeLanguage={this.changeLanguage} onLogout={this.logOut}/>
+                            <SideBar changeLanguage={this.changeLanguage}
+                                     onLogout={this.logOut}
+                                     isStore={this.state.loggedStoreAdmin}
+                                     user={this.state.user}
+                            />
                             <ProtectedRoute
                                 exact
                                 path='/stores'
@@ -85,6 +110,9 @@ class App extends React.Component {
                                 render={props => <StoreProducts {...props}
                                                                 addProductToCart={this.addProductToCart}
                                                                 productIsInCart={this.productIsInCart}
+                                                                isStoreAdmin={this.state.loggedStoreAdmin}
+                                                                storeId={this.state.storeId}
+                                                                user={this.state.user}
                                 />}
                             />
                             <Route

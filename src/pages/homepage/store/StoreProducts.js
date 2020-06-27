@@ -7,6 +7,7 @@ import Product from "../product/Product";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 import {LanguageContext} from "../../../constants/LanguageMaps";
+import AddProductModal from "./addProductModal/AddProductModal";
 import StoreInfo from "./store-info/StoreInfo";
 
 
@@ -16,13 +17,19 @@ class StoreProducts extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            storeId: this.props.match.params.id,
-            loadingEntitiesState: true
+            storeId: parseInt(this.props.match.params.id),
+            loadingEntitiesState: true,
+            addProductModalOpen: false,
+            isAdminOfStore: false
         }
     }
 
     componentDidMount() {
+        this.setState({user: this.props.user});
         this.showStoreProducts(this.state.storeId);
+        if(this.props.storeId === this.state.storeId){
+            this.setState({isAdminOfStore: true})
+        }
     }
 
     showStoreProducts = (storeId) => {
@@ -45,7 +52,11 @@ class StoreProducts extends React.Component {
         })
     }
 
-    renderProducts = (product) => <Product product={product} productIsInCart={this.props.productIsInCart} onAddToCart={this.props.addProductToCart} onRemoveFromCart={this.removeFromCart}/>
+    renderProducts = (product) => <Product product={product} productIsInCart={this.props.productIsInCart} onAddToCart={this.props.addProductToCart} onRemoveFromCart={this.removeFromCart} isStoreAdmin={this.props.isStoreAdmin}/>
+
+    closeModal = () => {
+        this.setState({addProductModalOpen: false})
+    }
 
     render() {
         return(
@@ -58,13 +69,25 @@ class StoreProducts extends React.Component {
                         {this.state.products.map(product => this.renderProducts(product))}
                     </div>
                     }
+
                     {!this.state.dataToShow && !this.state.loadingEntitiesState &&
                         <div className="no-products">
                             <FontAwesomeIcon icon={faShoppingBasket}/>
-                            <span>{this.context.noProducts}</span>
+                            {this.props.isStoreAdmin && <span>{this.context.noOwnProducts}</span>}
+                            {!this.props.isStoreAdmin && <span>{this.context.noProducts}</span>}
+
                         </div>
                     }
+                    {this.state.isAdminOfStore &&
+                    <button className="add-button"
+                            onClick={() => this.setState({addProductModalOpen: true})}>Agregar Producto</button>
+                    }
                 </div>
+                {this.state.addProductModalOpen && <AddProductModal onClose={this.closeModal}
+                                                                    storeId={this.state.storeId}
+                                                                    renderProducts={this.renderProducts}
+                                                                    isAdminOfStore={this.state.isAdminOfStore}
+                />}
             </div>
         )
     }

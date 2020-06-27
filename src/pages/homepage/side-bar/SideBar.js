@@ -16,6 +16,9 @@ class SideBar extends React.Component {
     goToStores = () => this.props.history.push('/stores')
     goToShoppingCart = () => this.props.history.push('/cart')
     goToCategories = () => this.props.history.push('/categories')
+    goToMyStore = () => this.props.history.push(`/stores/${this.props.user.store.id}/products`)
+
+
     logOut = () => {
         this.props.history.push('/')
         this.props.onLogout();
@@ -39,7 +42,7 @@ class SideBar extends React.Component {
                     </div>
                     {this.props.isStore &&
                     <div className="link">
-                        <a className="link-search" onClick={this.goToCategories}>{this.context.addProducts}</a>
+                        <a className="link-search" onClick={this.goToMyStore}>{this.context.addProducts}</a>
                         <FontAwesomeIcon icon={faArrowCircleRight}/>
                     </div>
                     }
@@ -47,10 +50,11 @@ class SideBar extends React.Component {
                         <a className="link-search" onClick={this.props.showDiscounts}>{this.context.discounts}</a>
                         <FontAwesomeIcon icon={faArrowCircleRight}/>
                     </div>*/}
+                    {!this.props.isStore &&
                     <div className="link">
                         <a className="link-search" onClick={this.goToShoppingCart}>{this.context.seeMyCart}</a>
                         <FontAwesomeIcon icon={faShoppingCart}/>
-                    </div>
+                    </div>}
                     <div className="link">
                         <a className="link-search" onClick={this.logOut}>{this.context.logOut}</a>
                         <FontAwesomeIcon onClick={this.logOut} icon={faDoorOpen}/>

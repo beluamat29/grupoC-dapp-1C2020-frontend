@@ -53,6 +53,18 @@
   .entities-panel {
     width: 100%;
 
+    .add-button {
+      background-color: #f4e04d;
+      border: none;
+      border-radius: 5px;
+      color: black;
+      padding: 15px 5px;
+      text-align: center;
+      display: inline-block;
+      font-size: 16px;
+      transition-duration: 0.4s;
+    }
+
     .nothing-to-show {
       width: 100%;
       height: 100%;

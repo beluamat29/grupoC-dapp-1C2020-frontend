@@ -21,11 +21,25 @@ const StoreService = () => {
     const getStoreById = (storeId) => {
         return axios.get(`${SERVICE_URL}stores/${storeId}`)
     }
+
+    const addProductOnStore = (product) => {
+        const body = {
+            name: product.name,
+            brand: product.brand,
+            price: product.price,
+            stock: product.stock,
+            category: product.category,
+            productImageURL: product.productImageURL,
+            storeId: product.storeId
+        }
+        return axios.post(`${SERVICE_URL}stores/addMerchandise`, body)
+    }
     return {
         getAllStores: getAllStores,
         getAllStoresWithACategory: getAllStoresWithACategory,
         getStoreProducts: getStoreProducts,
-        getStoreById: getStoreById
+        getStoreById: getStoreById,
+        addProductOnStore: addProductOnStore
     }
 }
 

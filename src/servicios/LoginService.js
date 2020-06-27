@@ -21,10 +21,15 @@ const LoginService = () => {
         return axios.post(`${SERVICE_URL}storeAdmin`, body)
     }
 
+    const getUserById = (id) => {
+        return axios.get(`${SERVICE_URL}users/${id}`)
+    }
+
     return {
         validateUser: validateUser,
         registerUser: registerUser,
-        registerStoreUser: registerStoreUser
+        registerStoreUser: registerStoreUser,
+        getUserById: getUserById
     }
 }
 
