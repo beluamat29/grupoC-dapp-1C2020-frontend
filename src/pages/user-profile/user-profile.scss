@@ -74,13 +74,36 @@
         justify-content: center;
         align-items: center;
 
-        label {
-          margin: 5px 0;
-        }
+        .modal-card-body-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
 
-        input {
-          height: 30px;
-          border-radius: 5px;
+          label {
+            margin: 5px 0;
+          }
+
+          input {
+            height: 30px;
+            border-radius: 5px;
+          }
+
+          .failed-icon {
+            svg {
+              height: 75px;
+              width: 75px;
+              color: #ff0020;
+            }
+          }
+
+          .success-icon {
+            svg {
+              height: 75px;
+              width: 75px;
+              color: #93d42f;
+            }
+          }
         }
       }
       .modal-card-foot {

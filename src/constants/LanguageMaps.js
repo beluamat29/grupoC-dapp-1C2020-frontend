@@ -28,6 +28,8 @@ export const LanguageMaps =
             userProfileSave: 'Guardar',
             confirmUserUpdateTitle: 'Confirmación de cambios en el perfil',
             confirmUserUpdateText: 'Por favor, ingresa tu contraseña actual para poder actualizar tu perfil',
+            userUpdateSuccess: '¡Tus datos fueron actualizados con éxito!',
+            userUpdateFailed: '¡Ups! Algo salió mal. Por favor, verifica que la contraseña ingresada es la correcta',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Limpieza',
                 'BUTCHER': 'Carniceria',
@@ -77,6 +79,8 @@ export const LanguageMaps =
             userProfileSave: 'Save',
             confirmUserUpdateTitle: 'Profile update confirmation',
             confirmUserUpdateText: 'Please, enter your current password to update your profile data',
+            userUpdateSuccess: 'Your user profile has been updated!',
+            userUpdateFailed: 'Updating user profile failed. Please check that your password is correct',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Cleaning supplies',
                 'BUTCHER': 'Butchers',
