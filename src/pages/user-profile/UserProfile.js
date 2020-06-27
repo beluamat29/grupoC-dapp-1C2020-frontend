@@ -26,6 +26,8 @@ class UserProfile extends React.Component {
     }
 
     openUpdateUserConfirmationModal = () => this.setState({updateConfirmationModalOpen: true})
+    closeUpdateConfirmationModal = () => this.setState({updateConfirmationModalOpen: false})
+
     updateUserField = (fieldName, newValue) => {
         const updatedUser = this.state.user
         updatedUser[fieldName] = newValue
@@ -69,7 +71,9 @@ class UserProfile extends React.Component {
                        </div>
                    </div>
                 </div>}
-                {this.state.updateConfirmationModalOpen && <UpdateUserConfirmation/>}
+                {this.state.updateConfirmationModalOpen && <UpdateUserConfirmation onClose={this.closeUpdateConfirmationModal}
+                                                                                   user={this.state.user}
+                />}
             </div>
         )
     }
