@@ -13,7 +13,8 @@ class UserProfile extends React.Component {
         this.state = {
             user: {},
             loadingUser: true,
-            updateConfirmationModalOpen: false
+            updateConfirmationModalOpen: false,
+            dataHasChanged: false
         }
     }
 
@@ -25,13 +26,17 @@ class UserProfile extends React.Component {
             .catch(error => console.log(error))
     }
 
-    openUpdateUserConfirmationModal = () => this.setState({updateConfirmationModalOpen: true})
+    openUpdateUserConfirmationModal = () => {
+        if(this.state.dataHasChanged) {
+            this.setState({updateConfirmationModalOpen: true})
+        }
+    }
     closeUpdateConfirmationModal = () => this.setState({updateConfirmationModalOpen: false})
 
     updateUserField = (fieldName, newValue) => {
         const updatedUser = this.state.user
         updatedUser[fieldName] = newValue
-        this.setState({user: updatedUser})
+        this.setState({user: updatedUser, dataHasChanged: true})
     }
 
     render() {
@@ -67,7 +72,8 @@ class UserProfile extends React.Component {
                                   onChange={(event) => this.updateUserField('password', event.target.value)}/>
                        </div>
                        <div className="user-profile-data-save-button">
-                           <button className="save-button" onClick={this.openUpdateUserConfirmationModal}>{this.context.userProfileSave}</button>
+                           <button className={"save-button" + (!this.state.dataHasChanged ? ' disabled' : '')}
+                                   onClick={this.openUpdateUserConfirmationModal}>{this.context.userProfileSave}</button>
                        </div>
                    </div>
                 </div>}

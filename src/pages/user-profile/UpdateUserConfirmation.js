@@ -45,7 +45,7 @@ class UpdateUserConfirmation extends React.Component {
                         { !this.state.userUpdateFailed && !this.state.userUpdateSucceed &&
                             <div className="modal-card-body-content">
                                 <span>{this.context.confirmUserUpdateText}</span>
-                                <label>{this.context.userProfilePassword}</label>
+                                <label>{this.context.password}</label>
                                 <input type="password" value={this.state.passwordToConfirm} onChange={(event) => this.updatePasswordToConfirm(event.target.value)}/>
                             </div>
                         }
