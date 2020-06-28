@@ -2,12 +2,14 @@ import * as React from "react";
 import "./product.scss"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faShoppingCart, faCheck, faTimes} from "@fortawesome/free-solid-svg-icons";
+import AddProductModal from "../store/addProductModal/AddProductModal";
 
 class Product extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            wasAddedToCart: false
+            wasAddedToCart: false,
+            editProductModalOpen: false
         }
     }
 
@@ -21,6 +23,13 @@ class Product extends React.Component {
         this.props.onRemoveFromCart(this.props.product)
     }
 
+    editProduct = () => {
+        this.setState({editProductModalOpen: true})
+    }
+
+    closeModal = () => {
+        this.setState({editProductModalOpen: false})
+    }
     render() {
         return (<div className="entity-card product-card">
             <div className="product-button">
@@ -38,6 +47,7 @@ class Product extends React.Component {
                     </div>
                 </div>
                 }
+
             </div>
             <div className='imagen-comercio'>
                 <img src={this.props.product.productImage}/>
@@ -52,7 +62,20 @@ class Product extends React.Component {
                 <div className='product-price'>
                     <p className="price">${this.props.product.price}</p>
                 </div>
+                <div>
+                    {this.props.isStoreAdmin &&
+                    <div className="edit-button">
+                        <button onClick={this.editProduct}>
+                            <span>Editar</span>
+                        </button>
+                    </div>}
+                </div>
             </div>
+                {this.state.editProductModalOpen && <AddProductModal onClose={this.closeModal}
+                                                                    storeId={this.state.storeId}
+                                                                    renderProducts={this.renderProducts}
+                                                                    isAdminOfStore={this.state.isAdminOfStore}
+                />}
         </div>
         )
     }
