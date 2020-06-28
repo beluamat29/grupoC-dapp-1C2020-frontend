@@ -36,6 +36,10 @@ export const LanguageMaps =
             storeSchedule: 'Horario de atención',
             toTime: 'a',
             storeDataOpeningDays: 'Días de atención:',
+            storeDataCategories: 'Rubros:',
+            deliveryDistanceInKm: 'Distancia de delivery (km):',
+            storeDataPaymentMethods: 'Métodos de pago:',
+            storeDataImageURL: 'URL de imágen de comercio:',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Limpieza',
                 'BUTCHER': 'Carniceria',
@@ -93,6 +97,10 @@ export const LanguageMaps =
             storeSchedule: 'Store schedule',
             toTime: 'to',
             storeDataOpeningDays: 'Opening days:',
+            storeDataCategories: 'Categories:',
+            deliveryDistanceInKm: 'Delivery distance (km):',
+            storeDataPaymentMethods: 'Payment methods:',
+            storeDataImageURL: 'Store image URL:',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Cleaning supplies',
                 'BUTCHER': 'Butchers',
