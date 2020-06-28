@@ -19,7 +19,7 @@ class ClientUserData extends React.Component {
                         />
                     </div>
                     <div className="user-profile-data-input">
-                        <label>{this.context.userProfilePassword}</label>
+                        <label>{this.context.password}</label>
                         <input type="password" id="user-password" name="user-password"
                                value={this.props.user.password}
                                onChange={(event) => this.props.updateUserField('password', event.target.value)}/>

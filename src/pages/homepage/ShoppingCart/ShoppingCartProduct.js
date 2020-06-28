@@ -25,7 +25,7 @@ class ShoppingCartProduct extends React.Component{
         return (
             <div className="product-in-cart">
                 <div className="product-image">
-                    <img src={this.props.product.productImage}/>
+                    <img src={this.props.product.productImageURL}/>
                 </div>
                 <div className="product-data">
                     <div className="product-name">

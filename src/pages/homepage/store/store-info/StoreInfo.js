@@ -15,7 +15,7 @@ class StoreInfo extends React.Component {
             <div className="store-info-container">
                 <div className="store-info">
                     <div className="store-image">
-                        <img src={this.props.store.storeImage} alt={":("}/>
+                        <img src={this.props.store.storeImageURL} alt={":("}/>
                     </div>
                     <div className="store-data">
                         <div className="store-name">

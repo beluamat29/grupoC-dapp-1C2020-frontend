@@ -41,16 +41,22 @@ class UserProfile extends React.Component {
         this.setState({user: updatedUser, dataHasChanged: true})
     }
 
+    updateStore = (newStore) => {
+        const updatedUser = this.state.user
+        updatedUser['store'] = newStore
+        this.setState({user: updatedUser, dataHasChanged: true}, this.openUpdateUserConfirmationModal)
+    }
+
     render() {
         return(
             <div className="user-profile-page">
-                {this.state.loadingUser && <LoadingSpinner isLoading={this.state.loadingUser}/>}
                 <div className="user-profile-header-panel">
                     <div className="user-profile-header-title">
                         <span>{this.context.welcomeToProfile}</span>
                     </div>
                     <div className="user-profile-header-subtitle">
-                        <span>{this.context.profileSubtitle}</span>
+                        {!this.state.user.isStoreAdmin && <span>{this.context.userProfileSubtitle}</span>}
+                        {this.state.user.isStoreAdmin && <span>{this.context.storeProfileSubtitle}</span>}
                     </div>
                 </div>
                 {!this.state.loadingUser && !this.state.user.isStoreAdmin && <ClientUserData user={this.state.user}
@@ -58,10 +64,13 @@ class UserProfile extends React.Component {
                                                                   dataHasChanged={this.state.dataHasChanged}
                                                                   openUpdateUserConfirmationModal={this.openUpdateUserConfirmationModal}/>
                 }
-                {!this.state.loadingUser && this.state.user.isStoreAdmin && <StoreAdminData user={this.state.user}/>}
+                {!this.state.loadingUser && this.state.user.isStoreAdmin && <StoreAdminData user={this.state.user}
+                                                                                            updateStore={this.updateStore}/>
+                }
                 {this.state.updateConfirmationModalOpen && <UpdateUserConfirmation onClose={this.closeUpdateConfirmationModal}
-                                                                                   storeAdmin={this.state.user}
+                                                                                   user={this.state.user}
                 />}
+                {this.state.loadingUser && <LoadingSpinner isLoading={this.state.loadingUser}/>}
             </div>
         )
     }

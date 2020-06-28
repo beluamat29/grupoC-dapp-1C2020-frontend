@@ -57,21 +57,21 @@ class StoreAdminData extends React.Component {
         const updatedStore = this.state.store;
         let openingDaysList = (this.state.store.storeSchedule.openingDays || [])
         updatedStore.storeSchedule.openingDays = openingDaysList.includes(day) ? openingDaysList.filter(openingDay => openingDay !== day) : openingDaysList.concat(day)
-        this.setState({store: updatedStore})
+        this.setState({store: updatedStore, dataHasChanged: true})
     }
 
     updateStoreCategories = (category) => {
         const updatedStore = this.state.store;
         let storeActualCategories = (this.state.store.storeCategories || [])
         updatedStore.storeCategories = storeActualCategories.includes(category) ? storeActualCategories.filter(aCategory => aCategory !== category) : storeActualCategories.concat(category)
-        this.setState({store: updatedStore})
+        this.setState({store: updatedStore, dataHasChanged: true})
     }
 
     updatePaymentMethod = (method) => {
         const updatedStore = this.state.store;
         let storeActualPaymentMethods = (this.state.store.availablePaymentMethods || [])
         updatedStore.availablePaymentMethods = storeActualPaymentMethods.includes(method) ? storeActualPaymentMethods.filter(aMethod => aMethod !== method) : storeActualPaymentMethods.concat(method)
-        this.setState({store: updatedStore})
+        this.setState({store: updatedStore, dataHasChanged: true})
     }
 
     render() {
@@ -83,14 +83,14 @@ class StoreAdminData extends React.Component {
                         <span>{this.state.username}</span>
                     </div>
                     <div className="user-profile-data-input">
-                        <label>{this.context.userProfilePassword}</label>
+                        <label>{this.context.password}</label>
                         <input type="password" id="user-password" name="user-password"
                                value={this.state.password}
                                onChange={(event) => this.props.updateUserField('password', event.target.value)}/>
                     </div>
                     <div className="user-profile-data-save-button">
                         <button className={"save-button" + (!this.state.dataHasChanged ? ' disabled' : '')}
-                                onClick={this.props.openUpdateUserConfirmationModal}>{this.context.userProfileSave}</button>
+                                onClick={() => this.props.updateStore(this.state.store)}>{this.context.userProfileSave}</button>
                     </div>
                 </div>
 
@@ -149,8 +149,8 @@ class StoreAdminData extends React.Component {
                         <div className="store-data-text-input">
                             <label>{this.context.storeDataImageURL}</label>
                             <input type="text" id="store-address" name="store-address"
-                                   value={this.state.store.storeImage}
-                                   onChange={(event) => this.setStoreField('storeImage', event.target.value)}/>
+                                   value={this.state.store.storeImageURL}
+                                   onChange={(event) => this.setStoreField('storeImageURL', event.target.value)}/>
                         </div>
                     </div>
                 </div>
