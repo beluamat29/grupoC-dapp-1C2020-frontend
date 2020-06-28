@@ -40,7 +40,7 @@ class Product extends React.Component {
                 }
             </div>
             <div className='imagen-comercio'>
-                <img src={this.props.product.productImage}/>
+                <img src={this.props.product.productImageURL}/>
             </div>
             <div className='product-name'>
                 <span>{this.props.product.name}</span>
