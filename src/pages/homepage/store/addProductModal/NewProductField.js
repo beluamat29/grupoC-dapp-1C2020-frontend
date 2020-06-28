@@ -19,18 +19,13 @@ class NewProductField extends React.Component {
     generateEntityCheckbox = (entity) => {
         return (
             <div className="rubro-checkbox">
-                <input type="radio" value={entity.value} checked={this.state.selectedOption === entity.value}
-                       onClick={this.handleOptionChange}/>
+                <input type="radio" value={entity.value} checked={this.props.product.category === entity.value}
+                       onClick= {(event) => this.props.onUpdate('category', event.target.value)}/>
                 <label className="checkbox">
                     {entity.label}
                 </label>
             </div>
         )
-    }
-
-    handleOptionChange = (changeEvent) => {
-        this.setState({selectedOption: changeEvent.target.value})
-        this.props.onUpdate('category', changeEvent.target.value)
     }
 
     render() {
