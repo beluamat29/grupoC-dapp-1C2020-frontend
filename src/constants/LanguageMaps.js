@@ -31,6 +31,11 @@ export const LanguageMaps =
             confirmUserUpdateText: 'Por favor, ingresa tu contraseña actual para poder actualizar tu perfil',
             userUpdateSuccess: '¡Tus datos fueron actualizados con éxito!',
             userUpdateFailed: '¡Ups! Algo salió mal. Por favor, verifica que la contraseña ingresada es la correcta',
+            storeName: 'Nombre del comercio',
+            storeAddress: 'Direccion',
+            storeSchedule: 'Horario de atención',
+            toTime: 'a',
+            storeDataOpeningDays: 'Días de atención:',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Limpieza',
                 'BUTCHER': 'Carniceria',
@@ -83,6 +88,11 @@ export const LanguageMaps =
             confirmUserUpdateText: 'Please, enter your current password to update your profile data',
             userUpdateSuccess: 'Your user profile has been updated!',
             userUpdateFailed: 'Updating user profile failed. Please check that your password is correct',
+            storeName: 'Store name',
+            storeAddress: 'Address',
+            storeSchedule: 'Store schedule',
+            toTime: 'to',
+            storeDataOpeningDays: 'Opening days:',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Cleaning supplies',
                 'BUTCHER': 'Butchers',
