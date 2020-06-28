@@ -4,9 +4,14 @@ class AdditionButtons extends React.Component {
     render() {
         return(
             <div className="registration-buttons">
-                {!this.props.additionSucceed &&
+                {!this.props.additionSucceed && !this.props.product.id &&
                 <div className="registering-buttons">
                     <button className="boton-modal" onClick={this.props.addProduct}>Agregar Producto</button>
+                </div>
+                }
+                {!this.props.additionSucceed && !!this.props.product.id &&
+                <div className="registering-buttons">
+                    <button className="boton-modal" onClick={this.props.updateProduct}>Editar Producto</button>
                 </div>
                 }
                 {this.props.additionSucceed &&

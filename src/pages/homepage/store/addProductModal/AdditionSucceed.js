@@ -1,6 +1,7 @@
 import * as React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
+import {LanguageContext} from "../../../../constants/LanguageMaps";
 
 class AdditionSucceed extends React.Component {
     render() {
@@ -10,11 +11,12 @@ class AdditionSucceed extends React.Component {
                     <FontAwesomeIcon icon={faCheckCircle}/>
                 </div>
                 <div className="success-title">
-                    ¡Tu producto fue agregado con éxito!
+                    <span>{this.context.saveProductSucceed}</span>
                 </div>
             </div>
         )
     }
 }
 
+AdditionSucceed.contextType = LanguageContext;
 export default AdditionSucceed;

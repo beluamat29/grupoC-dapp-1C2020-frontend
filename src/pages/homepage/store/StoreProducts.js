@@ -56,7 +56,8 @@ class StoreProducts extends React.Component {
                                            productIsInCart={this.props.productIsInCart}
                                            onAddToCart={this.props.addProductToCart}
                                            onRemoveFromCart={this.removeFromCart}
-                                           isStoreAdmin={this.props.isStoreAdmin}/>
+                                           isStoreAdmin={this.props.isStoreAdmin}
+                                           isAdminOfStore={this.state.isAdminOfStore}/>
 
     closeModal = () => {
         this.setState({addProductModalOpen: false})

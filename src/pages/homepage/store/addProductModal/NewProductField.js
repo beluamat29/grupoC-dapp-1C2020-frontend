@@ -5,15 +5,14 @@ import {faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
 
 
 class NewProductField extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            availableStock: 0
+
         }
     }
 
     updateAvailableStock = (number) => {
-        this.setState({availableStock: Math.max(1, number)});
         this.props.onUpdate('stock', Math.max(1, number));
     }
 
@@ -21,7 +20,7 @@ class NewProductField extends React.Component {
         return (
             <div className="rubro-checkbox">
                 <input type="radio" value={entity.value} checked={this.state.selectedOption === entity.value}
-                        onClick={this.handleOptionChange}/>
+                       onClick={this.handleOptionChange}/>
                 <label className="checkbox">
                     {entity.label}
                 </label>
@@ -31,39 +30,39 @@ class NewProductField extends React.Component {
 
     handleOptionChange = (changeEvent) => {
         this.setState({selectedOption: changeEvent.target.value})
-        this.props.onAddingCategory(changeEvent.target.value)
+        this.props.onUpdate('category', changeEvent.target.value)
     }
 
     render() {
-        return(
+        return (
             <div className="modal-card-body">
                 <div className="seccion-de-campos">
                     <div className="campo-a-rellenar">
                         <label>
                             Nombre
                         </label>
-                        <input type="text" id="name" name="name"
+                        <input type="text" value={this.props.product.name} id="name" name="name"
                                onChange={(event) => this.props.onUpdate('name', event.target.value)}/>
                     </div>
                     <div className="campo-a-rellenar">
                         <label>
                             Marca
                         </label>
-                        <input type="text" id="brand" name="brand"
+                        <input type="text" value={this.props.product.brand} id="brand" name="brand"
                                onChange={(event) => this.props.onUpdate('brand', event.target.value)}/>
                     </div>
                     <div className="campo-a-rellenar">
                         <label>
                             Precio
                         </label>
-                        <input type="text" id="price" name="price"
+                        <input type="text" value={this.props.product.price} id="price" name="price"
                                onChange={(event) => this.props.onUpdate('price', event.target.value)}/>
                     </div>
                     <div className="campo-a-rellenar">
                         <label>
                             Stock disponible
                         </label>
-                        <input type="number" value={this.state.availableStock} id="stock" name="stock"
+                        <input type="number" value={this.props.product.stock} id="stock" name="stock"
                                onChange={(event) => this.updateAvailableStock(parseInt(event.target.value))}/>
                     </div>
 
@@ -74,7 +73,7 @@ class NewProductField extends React.Component {
                     </div>}
 
                 </div>
-                    <div className="seccion-de-campos">
+                <div className="seccion-de-campos">
                     <div className="campo-a-rellenar">
                         <label>
                             Categoría
@@ -87,7 +86,8 @@ class NewProductField extends React.Component {
                         <label>
                             <span>URL de la imagen del producto</span>
                         </label>
-                        <input type="text" value={this.state.productImageURL} id="productImageURL" name="productImageURL"
+                        <input type="text" value={this.props.product.productImageURL} id="productImageURL"
+                               name="productImageURL"
                                onChange={(event) => this.props.onUpdate('productImageURL', event.target.value)}/>
                     </div>
                 </div>
