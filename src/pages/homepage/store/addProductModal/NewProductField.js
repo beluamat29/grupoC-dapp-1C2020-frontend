@@ -17,16 +17,21 @@ class NewProductField extends React.Component {
         this.props.onUpdate('stock', Math.max(1, number));
     }
 
-    generateEntityCheckbox = (entity, onSelectEntity) => {
+    generateEntityCheckbox = (entity) => {
         return (
-            //TODO: VER QUE SOLO SE PUEDA SELECCIONAR UNA CATEGORIA
             <div className="rubro-checkbox">
-                <input type="checkbox" value={entity.value} onClick={(event) => onSelectEntity(event.target.value)}/>
+                <input type="radio" value={entity.value} checked={this.state.selectedOption === entity.value}
+                        onClick={this.handleOptionChange}/>
                 <label className="checkbox">
                     {entity.label}
                 </label>
             </div>
         )
+    }
+
+    handleOptionChange = (changeEvent) => {
+        this.setState({selectedOption: changeEvent.target.value})
+        this.props.onAddingCategory(changeEvent.target.value)
     }
 
     render() {
@@ -75,7 +80,7 @@ class NewProductField extends React.Component {
                             Categoría
                         </label>
                         <div className="categories-grid">
-                            {productCategories.map(category => this.generateEntityCheckbox(category, this.props.onAddingCategory))}
+                            {productCategories.map(category => this.generateEntityCheckbox(category))}
                         </div>
                     </div>
                     <div className="campo-a-rellenar">
