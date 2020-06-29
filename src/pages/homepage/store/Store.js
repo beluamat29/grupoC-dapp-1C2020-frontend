@@ -14,7 +14,7 @@ class Store extends React.Component {
         return (
             <div className="entity-card" onClick={this.goToStoreProducts}>
                 <div className='imagen-comercio'>
-                    <img src={this.props.store.storeImage} onError={<div>holis</div>}/>
+                    <img src={this.props.store.storeImageURL} onError={<div>holis</div>}/>
                 </div>
                 <div className='nombre-comercio'>
                     <span>{this.props.store.storeName}</span>
