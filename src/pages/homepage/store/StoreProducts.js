@@ -9,6 +9,7 @@ import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 import {LanguageContext} from "../../../constants/LanguageMaps";
 import AddProductModal from "./addProductModal/AddProductModal";
 import StoreInfo from "./store-info/StoreInfo";
+import CSVUploadModal from "./csvUploadModal/CSVUploadModal";
 
 
 
@@ -20,6 +21,7 @@ class StoreProducts extends React.Component {
             storeId: parseInt(this.props.match.params.id),
             loadingEntitiesState: true,
             addProductModalOpen: false,
+            massiveCSVuploadModalOpen: false,
             isAdminOfStore: false
         }
     }
@@ -58,6 +60,8 @@ class StoreProducts extends React.Component {
         this.setState({addProductModalOpen: false})
     }
 
+    closeCSVModal = () => this.setState({massiveCSVuploadModalOpen: false})
+
     render() {
         return(
             <div className="homepage">
@@ -82,12 +86,17 @@ class StoreProducts extends React.Component {
                     <button className="add-button"
                             onClick={() => this.setState({addProductModalOpen: true})}>Agregar Producto</button>
                     }
+                    {this.state.isAdminOfStore &&
+                    <button className="add-button"
+                            onClick={() => this.setState({massiveCSVuploadModalOpen: true})}>{this.context.massiveUploadButtonText}</button>
+                    }
                 </div>
                 {this.state.addProductModalOpen && <AddProductModal onClose={this.closeModal}
                                                                     storeId={this.state.storeId}
                                                                     renderProducts={this.renderProducts}
                                                                     isAdminOfStore={this.state.isAdminOfStore}
                 />}
+                {this.state.massiveCSVuploadModalOpen && <CSVUploadModal onClose={this.closeCSVModal}/>}
             </div>
         )
     }

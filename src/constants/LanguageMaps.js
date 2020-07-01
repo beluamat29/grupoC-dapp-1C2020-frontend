@@ -61,7 +61,11 @@ export const LanguageMaps =
                 'Efectivo': 'Efectivo',
                 'Tarjeta de credito': 'Tarjeta de crédito',
                 'Tarjeta de debito': 'Tarjeta de débito'
-            }
+            },
+            massiveUploadButtonText: 'Carga por CSV',
+            massiveUploadModalTitle: 'Carga de productos por CSV',
+            massiveUploadConfirmationButton: 'Cargar',
+            massiveUploadDescriptionText: 'Aqui podras cargar productos de manera masiva mediante la subida de un archivo CSV. Cada fila del archivo debe respetar el formato nombre de producto, marca del producto, precio, stock y URL de la imagen del mismo.'
         },
         english: {
             sideBarStore: 'Stores',
@@ -122,7 +126,11 @@ export const LanguageMaps =
                 'Efectivo': 'Cash',
                 'Tarjeta de credito': 'Credit card',
                 'Tarjeta de debito': 'Debit card'
-            }
+            },
+            massiveUploadButtonText: 'CSV upload',
+            massiveUploadModalTitle: 'CSV merchandise upload',
+            massiveUploadConfirmationButton: 'Upload',
+            massiveUploadDescriptionText: 'Here you can make CSV merchandise uploads. Each row should have the format product name, product brand, price, stock and sotck image URL.'
         }
     }
 
