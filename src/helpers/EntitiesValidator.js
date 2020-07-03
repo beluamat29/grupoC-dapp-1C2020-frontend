@@ -12,9 +12,9 @@ const EntitiesValidator = () => {
         return /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(state.username);
     }
 
-    const validateProduct = (state) => {
-        return !!state.name && !!state.brand && !!state.price && !!state.stock && !!state.productImageURL
-            && !!state.category;
+    const validateProduct = (product) => {
+        return !!product.name && !!product.brand && !!product.price && !!product.stock && !!product.productImageURL
+            && !!product.category;
     }
 
     return {

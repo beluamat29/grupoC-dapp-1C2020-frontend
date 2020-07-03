@@ -22,6 +22,7 @@ const StoreService = () => {
         return axios.get(`${SERVICE_URL}stores/${storeId}`)
     }
 
+
     const addProductOnStore = (product) => {
         const body = {
             name: product.name,
@@ -32,6 +33,7 @@ const StoreService = () => {
             productImageURL: product.productImageURL,
             storeId: product.storeId
         }
+        debugger
         return axios.post(`${SERVICE_URL}stores/addMerchandise`, body)
     }
     return {
