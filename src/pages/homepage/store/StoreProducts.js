@@ -96,7 +96,9 @@ class StoreProducts extends React.Component {
                                                                     renderProducts={this.renderProducts}
                                                                     isAdminOfStore={this.state.isAdminOfStore}
                 />}
-                {this.state.massiveCSVuploadModalOpen && <CSVUploadModal onClose={this.closeCSVModal}/>}
+                {this.state.massiveCSVuploadModalOpen && <CSVUploadModal onClose={this.closeCSVModal}
+                                                                         storeId={this.state.storeId}
+                />}
             </div>
         )
     }

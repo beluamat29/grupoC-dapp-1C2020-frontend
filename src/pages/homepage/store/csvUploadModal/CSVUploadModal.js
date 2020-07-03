@@ -2,10 +2,19 @@ import {LanguageContext} from "../../../../constants/LanguageMaps";
 import * as React from "react";
 import './cvs-upload-modal.scss'
 import CSVReader from 'react-csv-reader';
+import StoreService from "../../../../servicios/StoreService";
 
 class CSVUploadModal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            productsToAdd: []
+        }
+    }
     handleOnFileLoad = (data) => {
-        return data.map(productArray => this.generateProductJson(productArray))
+        const csvProducts = data.map(productArray => this.generateProductJson(productArray));
+        csvProducts.pop();
+        this.setState({productsToAdd: csvProducts});
     }
 
     generateProductJson = (productArray) => {
@@ -16,10 +25,21 @@ class CSVUploadModal extends React.Component {
             stock: productArray[3],
             productImageURL: productArray[4],
             category: productArray[5],
-            storeId: 0
+            isActiveMerchandise: true,
+            storeId: this.props.storeId
         }
         return product
     }
+
+    addProductsInBatch = () => {
+        const body = {
+            storeId: this.props.storeId,
+            merchandiseList: this.state.productsToAdd
+        }
+        StoreService().addProductsInBatch(body)
+            .then(() => this.props.onClose())
+    }
+
     render() {
         return(
             <div className="modal">
@@ -45,7 +65,7 @@ class CSVUploadModal extends React.Component {
                         </div>
                     </div>
                     <footer className="modal-card-foot">
-                        <button className="upload-button">{this.context.massiveUploadConfirmationButton}</button>
+                        <button className="upload-button" onClick={this.addProductsInBatch}>{this.context.massiveUploadConfirmationButton}</button>
                     </footer>
                 </div>
             </div>

@@ -22,6 +22,10 @@ const StoreService = () => {
         return axios.get(`${SERVICE_URL}stores/${storeId}`)
     }
 
+    const addProductsInBatch = (body) => {
+        return axios.post(`${SERVICE_URL}stores/addMerchandiseList`, body)
+    }
+
     const addProductOnStore = (product) => {
         const body = {
             name: product.name,
@@ -39,7 +43,8 @@ const StoreService = () => {
         getAllStoresWithACategory: getAllStoresWithACategory,
         getStoreProducts: getStoreProducts,
         getStoreById: getStoreById,
-        addProductOnStore: addProductOnStore
+        addProductOnStore: addProductOnStore,
+        addProductsInBatch: addProductsInBatch
     }
 }
 
