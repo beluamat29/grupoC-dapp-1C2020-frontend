@@ -76,7 +76,7 @@ class App extends React.Component {
     }
     logOut = () => {
         this.setState({loggedUser: false})
-        localStorage.setItem('loggedUser', false)
+        localStorage.clear()
     }
 
     changeLanguage = (language) => this.setState({language: language})
