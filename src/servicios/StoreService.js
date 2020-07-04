@@ -14,8 +14,8 @@ const StoreService = () => {
         return axios.get(`${SERVICE_URL}stores?category=${category}`)
     }
 
-    const getStoreProducts = (storeId) => {
-        return axios.get(`${SERVICE_URL}stores/${storeId}/products`)
+    const getStoreProducts = (storeId, isAdminOfStore) => {
+        return axios.get(`${SERVICE_URL}stores/${storeId}/products?activeProducts=${(!isAdminOfStore).toString()}`)
     }
 
     const getStoreById = (storeId) => {
@@ -36,7 +36,6 @@ const StoreService = () => {
             productImageURL: product.productImageURL,
             storeId: product.storeId
         }
-        debugger
         return axios.post(`${SERVICE_URL}stores/addMerchandise`, body)
     }
     return {

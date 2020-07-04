@@ -28,15 +28,17 @@ class StoreProducts extends React.Component {
 
     componentDidMount() {
         this.setState({user: this.props.user});
-        this.showStoreProducts(this.state.storeId);
         if(this.props.storeId === this.state.storeId){
-            this.setState({isAdminOfStore: true})
+            this.setState({isAdminOfStore: true}, () => this.showStoreProducts(this.state.storeId));
+        } else {
+            this.setState({isAdminOfStore: false}, () => this.showStoreProducts(this.state.storeId));
         }
+
     }
 
     showStoreProducts = (storeId) => {
         this.setState({loadingEntitiesState: true})
-        StoreService().getStoreProducts(storeId)
+        StoreService().getStoreProducts(storeId, this.state.isAdminOfStore)
             .then(result => {
                 if(result.data.merchandises.length === 0) {
                     this.setState({products: this.addStoresToProducts(result.data.merchandises, result.data.store.id, result.data.store.storeName), loadingEntitiesState: false, dataToShow: false, store: result.data.store })
@@ -89,7 +91,7 @@ class StoreProducts extends React.Component {
                     }
                     {this.state.isAdminOfStore &&
                     <button className="add-button"
-                            onClick={() => this.setState({addProductModalOpen: true})}>Agregar Producto</button>
+                            onClick={() => this.setState({addProductModalOpen: true})}>{this.context.addNewProductButton}</button>
                     }
                     {this.state.isAdminOfStore &&
                     <button className="add-button"
@@ -98,6 +100,7 @@ class StoreProducts extends React.Component {
                 </div>
                 {this.state.addProductModalOpen && <AddProductModal onClose={this.closeModal}
                                                                     storeId={this.state.storeId}
+                                                                    isEditingProduct={false}
                                                                     renderProducts={this.renderProducts}
                                                                     isAdminOfStore={this.state.isAdminOfStore}
                 />}

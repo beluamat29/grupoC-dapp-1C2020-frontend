@@ -1,0 +1,13 @@
+.modal {
+  .modal-card {
+    .modal-card-body {
+      flex-direction: row;
+    }
+
+    .modal-card-foot {
+      height: 20%;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

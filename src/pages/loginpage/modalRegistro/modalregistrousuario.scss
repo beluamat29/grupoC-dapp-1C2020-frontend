@@ -112,15 +112,18 @@
       flex-direction: column;
       align-items: center;
 
-      .success-icon {
-        svg {
-          height: 75px;
-          width: 75px;
-          color: #93d42f;
+      .success-icon-container {
+        text-align: center;
+        .success-icon {
+          svg {
+            height: 75px;
+            width: 75px;
+            color: #93d42f;
+          }
         }
-      }
-      .success-title {
-        font-size: x-large;
+        .success-title {
+          font-size: x-large;
+        }
       }
 
       .success-subtitle {

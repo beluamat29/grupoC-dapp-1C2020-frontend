@@ -7,11 +7,13 @@ class AdditionSucceed extends React.Component {
     render() {
         return(
             <div className="modal-card-body success">
-                <div className='success-icon'>
-                    <FontAwesomeIcon icon={faCheckCircle}/>
-                </div>
-                <div className="success-title">
-                    <span>{this.context.saveProductSucceed}</span>
+                <div className='success-icon-container'>
+                    <div className='success-icon'>
+                        <FontAwesomeIcon icon={faCheckCircle}/>
+                    </div>
+                    <div className="success-title">
+                        <span>{this.context.saveProductSucceed}</span>
+                    </div>
                 </div>
             </div>
         )

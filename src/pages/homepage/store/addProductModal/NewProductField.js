@@ -2,6 +2,7 @@ import * as React from "react";
 import {productCategories} from "../../../../constants/Constants";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
+import {LanguageContext} from "../../../../constants/LanguageMaps";
 
 
 class NewProductField extends React.Component {
@@ -34,32 +35,48 @@ class NewProductField extends React.Component {
                 <div className="seccion-de-campos">
                     <div className="campo-a-rellenar">
                         <label>
-                            Nombre
+                            <span>{this.context.addProductNameField}</span>
                         </label>
                         <input type="text" value={this.props.product.name} id="name" name="name"
                                onChange={(event) => this.props.onUpdate('name', event.target.value)}/>
                     </div>
                     <div className="campo-a-rellenar">
                         <label>
-                            Marca
+                            {this.context.addProductBrandField}
                         </label>
                         <input type="text" value={this.props.product.brand} id="brand" name="brand"
                                onChange={(event) => this.props.onUpdate('brand', event.target.value)}/>
                     </div>
                     <div className="campo-a-rellenar">
                         <label>
-                            Precio
+                            {this.context.addProductPriceField}
                         </label>
                         <input type="text" value={this.props.product.price} id="price" name="price"
                                onChange={(event) => this.props.onUpdate('price', event.target.value)}/>
                     </div>
                     <div className="campo-a-rellenar">
                         <label>
-                            Stock disponible
+                            {this.context.addProductAvailableStockField}
                         </label>
                         <input type="number" value={this.props.product.stock} id="stock" name="stock"
                                onChange={(event) => this.updateAvailableStock(parseInt(event.target.value))}/>
                     </div>
+                    {this.props.isEditingProduct &&
+                    <div className="campo-a-rellenar">
+                        <label className="checkbox">
+                            {this.context.editProductDeleteProduct}
+                        </label>
+                        <div className="categories-grid">
+                            <div className="rubro-checkbox">
+                                <input type="checkbox" value={!this.props.product.isActiveMerchandise} checked={this.props.product.isActiveMerchandise}
+                                       onClick= {(event) => this.props.onUpdate('isActiveMerchandise', event.target.value)}/>
+                                <label className="checkbox">
+                                    {this.context.isActiveProduct}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    }
 
                     {!this.props.isValidProduct &&
                     <div className="user-error">
@@ -71,7 +88,7 @@ class NewProductField extends React.Component {
                 <div className="seccion-de-campos">
                     <div className="campo-a-rellenar">
                         <label>
-                            Categoría
+                            {this.context.addProductCategoryField}
                         </label>
                         <div className="categories-grid">
                             {productCategories.map(category => this.generateEntityCheckbox(category))}
@@ -79,7 +96,7 @@ class NewProductField extends React.Component {
                     </div>
                     <div className="campo-a-rellenar">
                         <label>
-                            <span>URL de la imagen del producto</span>
+                            <span>{this.context.addProductImageURLField}</span>
                         </label>
                         <input type="text" value={this.props.product.productImageURL} id="productImageURL"
                                name="productImageURL"
@@ -90,5 +107,5 @@ class NewProductField extends React.Component {
         )
     }
 }
-
+NewProductField.contextType = LanguageContext;
 export default NewProductField;
