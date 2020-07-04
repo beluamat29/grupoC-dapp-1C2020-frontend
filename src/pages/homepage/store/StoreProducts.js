@@ -54,7 +54,12 @@ class StoreProducts extends React.Component {
         })
     }
 
-    renderProducts = (product) => <Product product={product} productIsInCart={this.props.productIsInCart} onAddToCart={this.props.addProductToCart} onRemoveFromCart={this.removeFromCart} isStoreAdmin={this.props.isStoreAdmin}/>
+    renderProducts = (product) => <Product product={product}
+                                           productIsInCart={this.props.productIsInCart}
+                                           onAddToCart={this.props.addProductToCart}
+                                           onRemoveFromCart={this.removeFromCart}
+                                           isStoreAdmin={this.props.isStoreAdmin}
+                                           isAdminOfStore={this.state.isAdminOfStore}/>
 
     closeModal = () => {
         this.setState({addProductModalOpen: false})

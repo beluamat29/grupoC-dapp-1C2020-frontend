@@ -5,6 +5,7 @@ import EntitiesValidator from "../../../../helpers/EntitiesValidator";
 import EntitiesBuilder from "../../../../helpers/EntitiesBuilder";
 import StoreService from "../../../../servicios/StoreService";
 import AdditionSucceed from "./AdditionSucceed";
+import MerchandiseService from "../../../../servicios/MerchandiseService";
 
 class AddProductModal extends React.Component{
     constructor(props){
@@ -12,12 +13,22 @@ class AddProductModal extends React.Component{
         this.state = {
             additionSucceed: false,
             isValidProduct: true,
-            storeId: this.props.storeId
+            storeId: this.props.storeId,
+            product: {}
+        }
+    }
+
+    componentDidMount() {
+        if (!!this.props.product) {
+            this.setState({
+                product: this.props.product})
         }
     }
 
     updateForm = (key, value) => {
-        this.setState({[key]: value})
+        const updatedProduct = this.state.product
+        updatedProduct[key] = value
+        this.setState({product: updatedProduct})
     }
 
     addCategory = (category) => {
@@ -34,10 +45,20 @@ class AddProductModal extends React.Component{
         }
     }
 
+    updateProduct = () => {
+        if(this.validateProduct()){
+            MerchandiseService().updateProduct(this.state.product)
+                .then(()=>{
+                    this.setState({additionSucceed: true})
+                })
+                .catch(error => console.log(error))
+        }
+    }
+
     buildProduct = () => EntitiesBuilder().buildProduct(this.state);
 
     validateProduct = () => {
-        const isValidProduct = EntitiesValidator().validateProduct(this.state);
+        const isValidProduct = EntitiesValidator().validateProduct(this.state.product);
         this.setState({isValidProduct: isValidProduct})
         return isValidProduct;
     }
@@ -55,6 +76,7 @@ class AddProductModal extends React.Component{
                     <NewProductField onUpdate={this.updateForm}
                                      onAddingCategory={this.addCategory}
                                      isValidProduct={this.state.isValidProduct}
+                                     product={this.state.product}
                     />}
 
                     {this.state.additionSucceed && <AdditionSucceed/>}
@@ -63,6 +85,8 @@ class AddProductModal extends React.Component{
                             additionSucceed={this.state.additionSucceed}
                             closeModal={this.props.onClose}
                             addProduct={this.addProduct}
+                            product={this.state.product}
+                            updateProduct={this.updateProduct}
                         />
                     </footer>
                 </div>

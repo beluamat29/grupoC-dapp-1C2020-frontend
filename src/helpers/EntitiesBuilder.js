@@ -29,13 +29,14 @@ const EntitiesBuilder = () => {
     }
 
     const buildProduct = (state) => {
+        debugger
         return {
-            name: state.name,
-            brand: state.brand,
-            price: state.price,
-            stock: state.stock || 0,
-            category: state.category,
-            productImageURL: state.productImageURL,
+            name: state.product.name,
+            brand: state.product.brand,
+            price: state.product.price,
+            stock: state.product.stock || 0,
+            category: state.product.category,
+            productImageURL: state.product.productImageURL,
             storeId: state.storeId
         }
     }
