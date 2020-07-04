@@ -89,7 +89,7 @@ class StoreProducts extends React.Component {
                     }
                     {this.state.isAdminOfStore &&
                     <button className="add-button"
-                            onClick={() => this.setState({addProductModalOpen: true})}>Agregar Producto</button>
+                            onClick={() => this.setState({addProductModalOpen: true})}>{this.context.addNewProductButton}</button>
                     }
                     {this.state.isAdminOfStore &&
                     <button className="add-button"
@@ -98,6 +98,7 @@ class StoreProducts extends React.Component {
                 </div>
                 {this.state.addProductModalOpen && <AddProductModal onClose={this.closeModal}
                                                                     storeId={this.state.storeId}
+                                                                    isEditingProduct={false}
                                                                     renderProducts={this.renderProducts}
                                                                     isAdminOfStore={this.state.isAdminOfStore}
                 />}

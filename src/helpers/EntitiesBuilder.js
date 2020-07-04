@@ -29,7 +29,6 @@ const EntitiesBuilder = () => {
     }
 
     const buildProduct = (state) => {
-        debugger
         return {
             name: state.product.name,
             brand: state.product.brand,

@@ -6,6 +6,8 @@ import EntitiesBuilder from "../../../../helpers/EntitiesBuilder";
 import StoreService from "../../../../servicios/StoreService";
 import AdditionSucceed from "./AdditionSucceed";
 import MerchandiseService from "../../../../servicios/MerchandiseService";
+import "./add-product.scss"
+import {LanguageContext} from "../../../../constants/LanguageMaps";
 
 class AddProductModal extends React.Component{
     constructor(props){
@@ -26,6 +28,12 @@ class AddProductModal extends React.Component{
     }
 
     updateForm = (key, value) => {
+        if(value === 'true'){
+            value = true
+        }
+        if(value === 'false'){
+            value = false
+        }
         const updatedProduct = this.state.product
         updatedProduct[key] = value
         this.setState({product: updatedProduct})
@@ -69,12 +77,13 @@ class AddProductModal extends React.Component{
                 <div className="modal-background"/>
                 <div className="modal-card">
                     <header className="modal-card-head">
-                        <p className="modal-card-title">Nuevo Producto</p>
+                        <p className="modal-card-title">{this.context.addNewProductTitle}</p>
                         <button className="delete" aria-label="close" onClick={this.props.onClose}/>
                     </header>
                     {!this.state.additionSucceed &&
                     <NewProductField onUpdate={this.updateForm}
                                      onAddingCategory={this.addCategory}
+                                     isEditingProduct={this.props.isEditingProduct}
                                      isValidProduct={this.state.isValidProduct}
                                      product={this.state.product}
                     />}
@@ -94,4 +103,5 @@ class AddProductModal extends React.Component{
         )
     }
 }
+AddProductModal.contextType = LanguageContext;
 export default AddProductModal;

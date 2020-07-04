@@ -73,6 +73,7 @@ class Product extends React.Component {
                     </div>
                 </div>
                 {this.state.editProductModalOpen && <AddProductModal onClose={this.closeModal}
+                                                                     isEditingProduct={true}
                                                                      storeId={this.state.storeId}
                                                                      renderProducts={this.renderProducts}
                                                                      isAdminOfStore={this.state.isAdminOfStore}
