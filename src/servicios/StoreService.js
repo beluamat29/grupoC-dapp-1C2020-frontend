@@ -14,8 +14,8 @@ const StoreService = () => {
         return axios.get(`${SERVICE_URL}stores?category=${category}`)
     }
 
-    const getStoreProducts = (storeId) => {
-        return axios.get(`${SERVICE_URL}stores/${storeId}/products`)
+    const getStoreProducts = (storeId, isStoreAdmin) => {
+        return axios.get(`${SERVICE_URL}stores/${storeId}/products?activeProducts=${isStoreAdmin}`)
     }
 
     const getStoreById = (storeId) => {
