@@ -74,6 +74,8 @@ class ShoppingCart extends React.Component{
                                                                              onAccept={this.emptyCart}
             />}
             {this.state.purchaseConfirmationModal && <PurchaseConfirmationModal onClose={this.closePurchaseConfirmationModal}
+                                                                                total={this.calculateTotalPrice()}
+                                                                                products={this.props.productsInCart}
             />}
 
         </>;

@@ -7,8 +7,25 @@
         width: 100%;
         margin-bottom: 10px;
 
+        &.span-block {
+          span {
+            display: block;
+            margin-bottom: 10px;
+          }
+        }
+
+        .time-error {
+          margin-top: 5px;
+          color: #ff0020;
+
+          svg {
+            color: #ff0020;
+            margin-right: 3px;
+          }
+        }
         .purchase-confirmation-field-title {
           font-size: larger;
+
         }
 
         .payment-methods {
