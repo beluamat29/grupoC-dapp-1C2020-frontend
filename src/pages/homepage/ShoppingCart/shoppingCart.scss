@@ -19,6 +19,7 @@
     display: inline-block;
     font-size: 16px;
     transition-duration: 0.4s;
+    margin-right: 10px;
   }
 
   .shopping-cart-title {
@@ -90,9 +91,10 @@
         }
       }
       .product-image{
+        display: flex;
         height: 100%;
         width: 13%;
-        background-color: lightcoral;
+        background-color: white;
       }
       .divider {
         width: 1px;

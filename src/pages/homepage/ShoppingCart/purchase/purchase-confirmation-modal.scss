@@ -1,0 +1,49 @@
+.modal {
+  .modal-card {
+    .modal-card-body {
+      flex-direction: column;
+
+      .purchase-confirmation-field {
+        width: 100%;
+        margin-bottom: 10px;
+
+        .purchase-confirmation-field-title {
+          font-size: larger;
+        }
+
+        .payment-methods {
+          display: flex;
+
+          .payment-method {
+            margin-right: 10px;
+            input {
+              margin-right: 3px;
+            }
+          }
+        }
+
+        .purchase-total-price {
+          height: 75%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: x-large;
+        }
+      }
+    }
+    .modal-card-foot {
+      .purchase-button {
+      background-color: #f4e04d;
+      border: none;
+      border-radius: 5px;
+      color: black;
+      padding: 15px 5px;
+      text-align: center;
+      display: inline-block;
+      font-size: 16px;
+      transition-duration: 0.4s;
+      margin: 10px 40px;
+    }
+    }
+  }
+}

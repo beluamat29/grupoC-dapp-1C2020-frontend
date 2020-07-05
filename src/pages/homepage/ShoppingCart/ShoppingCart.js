@@ -3,12 +3,14 @@ import "./shoppingCart.scss"
 import ShoppingCartProduct from "./ShoppingCartProduct";
 import {LanguageContext} from "../../../constants/LanguageMaps";
 import EmptyCartConfirmation from "./EmptyCartConfirmation";
+import PurchaseConfirmationModal from "./purchase/PurchaseConfirmationModal";
 
 class ShoppingCart extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            emptyCartModalConfirmation: false
+            emptyCartModalConfirmation: false,
+            purchaseConfirmationModal: false
         }
     }
 
@@ -25,8 +27,9 @@ class ShoppingCart extends React.Component{
         return this.props.productsInCart.map((product) => product.price * product.quantity).reduce((a,b) => a+b)
     }
 
-    openEmptyCartModal = () => {this.setState({emptyCartModalConfirmation: true})}
-
+    openEmptyCartModal = () => this.setState({emptyCartModalConfirmation: true})
+    openPurchaseConfirmationModal = () => this.setState({purchaseConfirmationModal: true})
+    closePurchaseConfirmationModal = () => this.setState({purchaseConfirmationModal: false})
     emptyCart = () => {
         this.props.emptyCart()
         this.closeEmptyCartModal()
@@ -58,7 +61,10 @@ class ShoppingCart extends React.Component{
             {!this.cartIsEmpty() &&
             <div className="shopping-cart-content">
                 <div className="shopping-cart-total">
-                    <button className="empty-cart" onClick={this.openEmptyCartModal}>{this.context.emptyCart}</button>
+                    <div>
+                        <button className="empty-cart" onClick={this.openEmptyCartModal}>{this.context.emptyCart}</button>
+                        <button className="empty-cart" onClick={this.openPurchaseConfirmationModal}>{this.context.startPurchase}</button>
+                    </div>
                     <span>Total:  $ {this.calculateTotalPrice()}</span>
                 </div>
                 {this.renderProductsInCart()}
@@ -66,7 +72,9 @@ class ShoppingCart extends React.Component{
             }
             {this.state.emptyCartModalConfirmation && <EmptyCartConfirmation onClose={this.closeEmptyCartModal}
                                                                              onAccept={this.emptyCart}
-                                                        />}
+            />}
+            {this.state.purchaseConfirmationModal && <PurchaseConfirmationModal onClose={this.closePurchaseConfirmationModal}
+            />}
 
         </>;
     }
