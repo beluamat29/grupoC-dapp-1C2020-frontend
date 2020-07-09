@@ -4,8 +4,9 @@ import AdditionButtons from "./additionButtons/AdditionButtons";
 import EntitiesValidator from "../../../../helpers/EntitiesValidator";
 import EntitiesBuilder from "../../../../helpers/EntitiesBuilder";
 import StoreService from "../../../../servicios/StoreService";
-import AdditionSucceed from "./AdditionSucceed";
+import ModalOperationSucceedMessage from "./ModalOperationSucceedMessage";
 import MerchandiseService from "../../../../servicios/MerchandiseService";
+import {LanguageContext} from "../../../../constants/LanguageMaps";
 
 class AddProductModal extends React.Component{
     constructor(props){
@@ -79,7 +80,7 @@ class AddProductModal extends React.Component{
                                      product={this.state.product}
                     />}
 
-                    {this.state.additionSucceed && <AdditionSucceed/>}
+                    {this.state.additionSucceed && <ModalOperationSucceedMessage message={this.context.saveProductSucceed}/>}
                     <footer className="modal-card-foot">
                         <AdditionButtons
                             additionSucceed={this.state.additionSucceed}
@@ -94,4 +95,5 @@ class AddProductModal extends React.Component{
         )
     }
 }
+AddProductModal.contextType = LanguageContext;
 export default AddProductModal;

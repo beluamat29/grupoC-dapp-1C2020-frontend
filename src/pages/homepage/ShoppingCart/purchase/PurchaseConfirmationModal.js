@@ -5,6 +5,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheckCircle, faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
 import EntitiesBuilder from "../../../../helpers/EntitiesBuilder";
 import PurchaseService from "../../../../servicios/PurchaseService";
+import ModalOperationSucceedMessage from "../../store/addProductModal/ModalOperationSucceedMessage";
+import LoadingSpinner from "../../../../components/loading-spinner/LoadingSpinner";
 
 class PurchaseConfirmationModal extends React.Component{
     constructor(props) {
@@ -30,6 +32,10 @@ class PurchaseConfirmationModal extends React.Component{
     updateDeliveryType = (deliveryType) => this.setState({deliveryType: deliveryType});
     updateDeliveryDateTime = (dateTime) => this.setState({deliveryDateTime: dateTime})
 
+    finishPurchase = () => {
+        this.props.onFinish()
+        this.props.onClose()
+    }
     render() {
         return(
             <div className="modal">
@@ -119,17 +125,15 @@ class PurchaseConfirmationModal extends React.Component{
                         </div>
                     }
                     {!this.state.loadingPurchase && this.state.purchaseSucceed &&
-                        <div className="modal-card-body">
-                            <div className='success-icon'>
-                                <FontAwesomeIcon icon={faCheckCircle}/>
-                            </div>
-                            <div className="success-title">
-                                <span>{this.context.purchaseSucceed}</span>
-                            </div>
-                        </div>
+                        <ModalOperationSucceedMessage message={this.context.purchaseSucceed}/>
+                    }
+                    {
+                        this.state.loadingPurchase &&
+                        <div className="modal-card-body"><LoadingSpinner isLoading={this.state.loadingPurchase}/></div>
                     }
                     <footer className="modal-card-foot">
-                        <button className="purchase-button" onClick={this.confirmPurchase}>{this.context.confirmPurchaseButton}</button>
+                        {!this.state.purchaseSucceed && <button className="purchase-button" onClick={this.confirmPurchase}>{this.context.confirmPurchaseButton}</button>}
+                        {this.state.purchaseSucceed && <button className="purchase-button" onClick={this.finishPurchase}>OK</button>}
                     </footer>
                 </div>
             </div>

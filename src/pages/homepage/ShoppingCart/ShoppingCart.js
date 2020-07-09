@@ -37,6 +37,7 @@ class ShoppingCart extends React.Component{
 
     closeEmptyCartModal = () => this.setState({emptyCartModalConfirmation: false})
 
+    emptyCartAfterPurchase = () => this.props.emptyCart();
 
     render() {
         return(
@@ -76,6 +77,7 @@ class ShoppingCart extends React.Component{
             {this.state.purchaseConfirmationModal && <PurchaseConfirmationModal onClose={this.closePurchaseConfirmationModal}
                                                                                 total={this.calculateTotalPrice()}
                                                                                 products={this.props.productsInCart}
+                                                                                onFinish={this.emptyCartAfterPurchase}
             />}
 
         </>;
