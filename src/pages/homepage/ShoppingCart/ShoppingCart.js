@@ -3,12 +3,14 @@ import "./shoppingCart.scss"
 import ShoppingCartProduct from "./ShoppingCartProduct";
 import {LanguageContext} from "../../../constants/LanguageMaps";
 import EmptyCartConfirmation from "./EmptyCartConfirmation";
+import PurchaseConfirmationModal from "./purchase/PurchaseConfirmationModal";
 
 class ShoppingCart extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            emptyCartModalConfirmation: false
+            emptyCartModalConfirmation: false,
+            purchaseConfirmationModal: false
         }
     }
 
@@ -32,8 +34,11 @@ class ShoppingCart extends React.Component{
         this.closeEmptyCartModal()
     }
 
+    emptyCartAfterPurchase = () => this.props.emptyCart();
     closeEmptyCartModal = () => this.setState({emptyCartModalConfirmation: false})
-
+    openEmptyCartModal = () => this.setState({emptyCartModalConfirmation: true})
+    openPurchaseConfirmationModal = () => this.setState({purchaseConfirmationModal: true})
+    closePurchaseConfirmationModal = () => this.setState({purchaseConfirmationModal: false})
 
     render() {
         return(
@@ -59,6 +64,7 @@ class ShoppingCart extends React.Component{
             <div className="shopping-cart-content">
                 <div className="shopping-cart-total">
                     <button className="empty-cart" onClick={this.openEmptyCartModal}>{this.context.emptyCart}</button>
+                    <button className="empty-cart" onClick={this.openPurchaseConfirmationModal}>{this.context.startPurchase}</button>
                     <span>Total:  $ {this.calculateTotalPrice()}</span>
                 </div>
                 {this.renderProductsInCart()}
@@ -66,7 +72,12 @@ class ShoppingCart extends React.Component{
             }
             {this.state.emptyCartModalConfirmation && <EmptyCartConfirmation onClose={this.closeEmptyCartModal}
                                                                              onAccept={this.emptyCart}
-                                                        />}
+            />}
+            {this.state.purchaseConfirmationModal && <PurchaseConfirmationModal onClose={this.closePurchaseConfirmationModal}
+                                                                                total={this.calculateTotalPrice()}
+                                                                                products={this.props.productsInCart}
+                                                                                onFinish={this.emptyCartAfterPurchase}
+            />}
 
         </>;
     }

@@ -1,0 +1,85 @@
+.modal {
+  .modal-card {
+    .modal-card-body {
+      flex-direction: column;
+
+      .success-icon {
+        svg {
+          height: 75px;
+          width: 75px;
+          color: #93d42f;
+        }
+      }
+
+      .success-title {
+        font-size: x-large;
+        text-align: center;
+      }
+
+      .purchase-confirmation-field {
+        width: 100%;
+        margin-bottom: 10px;
+
+        .time-field {
+          height: 30px;
+          border-radius: 5px;
+          margin-right: 15px;
+        }
+
+        &.span-block {
+          span {
+            display: block;
+            margin-bottom: 10px;
+          }
+        }
+
+        .time-error {
+          margin-top: 5px;
+          color: #ff0020;
+
+          svg {
+            color: #ff0020;
+            margin-right: 3px;
+          }
+        }
+        .purchase-confirmation-field-title {
+          font-size: larger;
+
+        }
+
+        .payment-methods {
+          display: flex;
+
+          .payment-method {
+            margin-right: 10px;
+            input {
+              margin-right: 3px;
+            }
+          }
+        }
+
+        .purchase-total-price {
+          height: 75%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: x-large;
+        }
+      }
+    }
+    .modal-card-foot {
+      .purchase-button {
+        background-color: #f4e04d;
+        border: none;
+        border-radius: 5px;
+        color: black;
+        padding: 15px 5px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+        transition-duration: 0.4s;
+        margin: 10px 40px;
+      }
+    }
+  }
+}
