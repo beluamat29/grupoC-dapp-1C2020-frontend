@@ -67,7 +67,7 @@ export const LanguageMaps =
             purchaseTotalPrice: 'Total de tu compra:',
             deliveryTimeSelection: 'Horario de entrega',
             deliveryTimeSelectionText: 'Por favor, selecciona un día y un horario en el que podamos dejar tu pedido',
-            deliveryTimeError: 'Por favor, selecciona un horario entre las 9:00AM y las 6:00PM',
+            deliveryTimeError: 'Por favor, selecciona una fecha posterior a hoy con al menos un día de diferencia y un horario aproximado entre las 09:00 AM y las 06:00 PM en el que podamos dejar tu pedido',
             purchaseSucceed: '¡Iuju! Tu compra fue exitosa! Revisa tu email para más detalles',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Limpieza',
@@ -161,7 +161,7 @@ export const LanguageMaps =
             deliveryTimeSelection: 'Delivery time',
             deliveryTimeSelectionText: 'Please, select a day and time when we can delivery your purchase',
             purchaseTotalPrice: 'Total price of your purchase:',
-            deliveryTimeError: 'Please, select a time between 9:00AM and 6:00PM',
+            deliveryTimeError: 'Please, select a date that is at least one day ahead of today and an approximated time between 9:00AM and 6:00PM',
             purchaseSucceed: 'Woohoo! Your purchase was a success! Check your email account for more details',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Cleaning supplies',

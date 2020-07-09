@@ -7,6 +7,7 @@ import EntitiesBuilder from "../../../../helpers/EntitiesBuilder";
 import PurchaseService from "../../../../servicios/PurchaseService";
 import ModalOperationSucceedMessage from "../../store/addProductModal/ModalOperationSucceedMessage";
 import LoadingSpinner from "../../../../components/loading-spinner/LoadingSpinner";
+import moment from "moment";
 
 class PurchaseConfirmationModal extends React.Component{
     constructor(props) {
@@ -21,16 +22,26 @@ class PurchaseConfirmationModal extends React.Component{
     }
 
     confirmPurchase = () => {
-        this.setState({loadingPurchase: true, purchaseSucceed: false})
-        const purchase = EntitiesBuilder().buildPurchase(this.props.products, this.state);
-        PurchaseService().confirmPurchase(purchase)
-            .then(() => this.setState({loadingPurchase: false, purchaseSucceed: true }))
-            .catch(() => console.log("salio todo mal"))
+        if(!this.state.invalidDeliveryTime) {
+            this.setState({loadingPurchase: true, purchaseSucceed: false})
+            const purchase = EntitiesBuilder().buildPurchase(this.props.products, this.state);
+
+            PurchaseService().confirmPurchase(purchase)
+                .then(() => this.setState({loadingPurchase: false, purchaseSucceed: true}))
+                .catch(() => console.log("salio todo mal"))
+        }
     }
 
     updatePaymentMethod = (paymentMethod) => this.setState({paymentMethod: paymentMethod})
     updateDeliveryType = (deliveryType) => this.setState({deliveryType: deliveryType});
-    updateDeliveryDateTime = (dateTime) => this.setState({deliveryDateTime: dateTime})
+    updateDeliveryDateTime = (dateTime) => {
+        const momentDateTime = moment(dateTime)
+        let tomorrow = moment().add(1, 'd');
+        const minimumTime = moment(dateTime).set({ hour: parseInt(8, 10), minute: parseInt(0, 10) })
+        const maximumTime = moment(dateTime).set({ hour: parseInt(18, 10), minute: parseInt(0, 10) })
+        let invalidDateTime = tomorrow.isAfter(momentDateTime) || !momentDateTime.isBetween(minimumTime, maximumTime);
+        this.setState({deliveryDateTime: dateTime, invalidDeliveryTime: invalidDateTime})
+    }
 
     finishPurchase = () => {
         this.props.onFinish()
