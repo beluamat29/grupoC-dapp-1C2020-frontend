@@ -51,7 +51,7 @@ class App extends React.Component {
 
     increaseProductQuantity = (product) => {
         let productToUpdate = this.state.productsInCart.find(p => p.id === product.id);
-        productToUpdate.quantity += 1;
+        productToUpdate.quantity = Math.min(productToUpdate.quantity + 1, product.stock);
         this.setState({productsInCart: this.state.productsInCart})
     }
 
