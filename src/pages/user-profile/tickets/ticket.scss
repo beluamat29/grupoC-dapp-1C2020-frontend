@@ -1,0 +1,21 @@
+.ticket {
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+
+  .ticket-header {
+    padding: 10px 10px 5px 10px;
+    font-size: initial;
+    display: flex;
+    justify-content: space-between;
+
+    .ticket-store-name {
+      color: coral;
+    }
+  }
+  .tickets-product-list {
+    display: grid;
+    padding: 10px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

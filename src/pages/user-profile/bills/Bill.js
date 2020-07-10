@@ -3,6 +3,16 @@ import {LanguageContext} from "../../../constants/LanguageMaps";
 import './bill.scss'
 import {faStore} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Ticket from "../tickets/Ticket";
+
+const tickets = [{
+                    ticketStore: {storeName: 'Lo de tito'},
+                    productList: [{name: 'Fideos', brand: 'Marolio', price: 34.2, quantity: 5},{name: 'Fideos', brand: 'Marolio', price: 34.2, quantity: 5},{name: 'Fideos', brand: 'Marolio', price: 34.2, quantity: 5},{name: 'Fideos', brand: 'Marolio', price: 34.2, quantity: 5}]
+                },
+                {
+                    ticketStore: {storeName: 'El calabozo del androide'},
+                    productList: [{name: 'Fideos', brand: 'Marolio', price: 34.2, quantity: 5},{name: 'Fideos', brand: 'Marolio', price: 34.2, quantity: 5},{name: 'Fideos', brand: 'Marolio', price: 34.2, quantity: 5},{name: 'Fideos', brand: 'Marolio', price: 34.2, quantity: 5}]
+                }]
 
 class Bill extends React.Component {
     parseStoresNames = () => this.props.stores.map(store => store.storeName).join(', ')
@@ -18,6 +28,9 @@ class Bill extends React.Component {
                     <FontAwesomeIcon icon={faStore}/>
                     <span>{this.parseStoresNames()}</span>
                 </div>
+                {
+                    tickets.map(ticket => <Ticket ticket={ticket}/>)
+                }
             </div>
         )
     }

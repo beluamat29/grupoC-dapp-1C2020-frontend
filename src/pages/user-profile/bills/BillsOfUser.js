@@ -5,7 +5,6 @@ import Bill from "./Bill";
 
 const listOfStores = [{storeName: 'Lo de tito'}, {storeName: 'El calabozo del androide y expendio de tarjetas de baseball'}, {storeName: 'Ednas Edibles'}]
 
-
 class BillsOfUser extends React.Component {
     render() {
         return(
