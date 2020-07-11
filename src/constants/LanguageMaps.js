@@ -73,6 +73,8 @@ export const LanguageMaps =
             numberOfPurchase: 'Compra N°',
             showMoreProducts: 'Ver más productos',
             showLessProducts: 'Ver menos productos',
+            showLessTickets: 'Ver menos tickets',
+            showMoreTickets: 'Ver más tickets',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Limpieza',
                 'BUTCHER': 'Carniceria',
@@ -171,6 +173,8 @@ export const LanguageMaps =
             numberOfPurchase: 'Purchase N°',
             showLessProducts: 'Show less products',
             showMoreProducts: 'Show more products',
+            showLessTickets: 'Show less tickets',
+            showMoreTickets: 'Show more tickets',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Cleaning supplies',
                 'BUTCHER': 'Butchers',

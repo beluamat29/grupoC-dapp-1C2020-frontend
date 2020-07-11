@@ -4,7 +4,7 @@ import './ticket.scss'
 import TicketProduct from "./TicketProduct";
 import {faStore} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-
+const MIN_AMOUNT_OF_PRODUCTS_TO_SHOW = 3
 class Ticket extends React.Component {
     constructor(props) {
         super(props);
@@ -19,8 +19,8 @@ class Ticket extends React.Component {
     }
 
     reduceProducts = () => {
-        if(this.props.ticket.productList.length > 3 && this.state.showingAllProducts) {
-            const products = this.props.ticket.productList.slice(0, (Math.min(3, this.props.ticket.productList.length)))
+        if(this.props.ticket.productList.length > MIN_AMOUNT_OF_PRODUCTS_TO_SHOW && this.state.showingAllProducts) {
+            const products = this.props.ticket.productList.slice(0, (Math.min(MIN_AMOUNT_OF_PRODUCTS_TO_SHOW, this.props.ticket.productList.length)))
             this.setState({showingAllProducts: false, productsToShow: products})
         } else {
             this.setState({showingAllProducts: true, productsToShow: this.props.ticket.productList})
@@ -43,9 +43,10 @@ class Ticket extends React.Component {
                 <div className="tickets-product-list">
                     {this.state.productsToShow.map(ticketProduct => <TicketProduct product={ticketProduct}/>)}
                 </div>
+                {this.props.ticket.productList.length > MIN_AMOUNT_OF_PRODUCTS_TO_SHOW &&
                 <div className="show-more-products">
                     <span onClick={this.reduceProducts}>{this.moreProductsText()}</span>
-                </div>
+                </div>}
             </div>
         )
     }

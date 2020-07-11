@@ -4,8 +4,6 @@ import './bills-of-user.scss'
 import Bill from "./Bill";
 import PurchaseService from "../../../servicios/PurchaseService";
 
-const listOfStores = [{storeName: 'Lo de tito'}, {storeName: 'El calabozo del androide y expendio de tarjetas de baseball'}, {storeName: 'Ednas Edibles'}]
-
 class BillsOfUser extends React.Component {
     constructor(props) {
         super(props);
