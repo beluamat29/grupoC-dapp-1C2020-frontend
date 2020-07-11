@@ -29,9 +29,7 @@ class Bill extends React.Component {
 
     moreTicketsText = () => this.state.showingAllTickets ? this.context.showLessTickets : this.context.showMoreTickets
 
-    parseStoresNames = () => {
-        this.props.bill.allTickets.map(ticket => ticket.ticketStore.storeName).join(', ')
-    }
+    parseStoresNames = () => this.props.bill.allTickets.map(ticket => ticket.ticketStore.storeName).join(', ')
 
     render() {
         return(
