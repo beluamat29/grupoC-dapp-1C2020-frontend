@@ -10,6 +10,7 @@ export const LanguageMaps =
             seeMyCart: 'Ver mi carrito',
             emptyCart: 'Vaciar Carrito',
             logOut: 'Salir',
+            quantity: 'Cantidad',
             sideBarTitle: 'Busca tu producto',
             saveProductSucceed: '¡Tu producto fue guardado con éxito!',
             noProducts: '¡Ups! Parece que no hay productos en este comercio',
@@ -69,6 +70,11 @@ export const LanguageMaps =
             deliveryTimeSelectionText: 'Por favor, selecciona un día y un horario en el que podamos dejar tu pedido',
             deliveryTimeError: 'Por favor, selecciona una fecha posterior a hoy con al menos un día de diferencia y un horario aproximado entre las 09:00 AM y las 06:00 PM en el que podamos dejar tu pedido',
             purchaseSucceed: '¡Iuju! Tu compra fue exitosa! Revisa tu email para más detalles',
+            numberOfPurchase: 'Compra N°',
+            showMoreProducts: 'Ver más productos',
+            showLessProducts: 'Ver menos productos',
+            showLessTickets: 'Ver menos tickets',
+            showMoreTickets: 'Ver más tickets',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Limpieza',
                 'BUTCHER': 'Carniceria',
@@ -87,9 +93,9 @@ export const LanguageMaps =
                 'SUNDAY': 'DOM'
             },
             paymentMethods: {
-                'Efectivo': 'Efectivo',
-                'Tarjeta de credito': 'Tarjeta de crédito',
-                'Tarjeta de debito': 'Tarjeta de débito'
+                'CASH': 'Efectivo',
+                'CREDIT_CARD': 'Tarjeta de crédito',
+                'DEBIT_CARD': 'Tarjeta de débito'
             },
             massiveUploadButtonText: 'Carga por CSV',
             massiveUploadModalTitle: 'Carga de productos por CSV',
@@ -115,6 +121,7 @@ export const LanguageMaps =
             pricePerUnit: 'Price per unit:',
             amountInCart: 'You are taking:',
             seeMyProfile: 'Go to account',
+            quantity: 'Quantity:',
             welcomeToProfile: 'Welcome to your profile',
             userProfileSubtitle: 'Check out and update you profile details and watch your purchases here',
             storeProfileSubtitle: 'You can update you user and store settings here',
@@ -163,6 +170,11 @@ export const LanguageMaps =
             purchaseTotalPrice: 'Total price of your purchase:',
             deliveryTimeError: 'Please, select a date that is at least one day ahead of today and an approximated time between 9:00AM and 6:00PM',
             purchaseSucceed: 'Woohoo! Your purchase was a success! Check your email account for more details',
+            numberOfPurchase: 'Purchase N°',
+            showLessProducts: 'Show less products',
+            showMoreProducts: 'Show more products',
+            showLessTickets: 'Show less tickets',
+            showMoreTickets: 'Show more tickets',
             storeCategories: {
                 'CLEANING_SUPPLIES': 'Cleaning supplies',
                 'BUTCHER': 'Butchers',
@@ -181,9 +193,9 @@ export const LanguageMaps =
                 'SUNDAY': 'SUN'
             },
             paymentMethods: {
-                'Efectivo': 'Cash',
-                'Tarjeta de credito': 'Credit card',
-                'Tarjeta de debito': 'Debit card'
+                'CASH': 'Cash',
+                'CREDIT_CARD': 'Credit card',
+                'DEBIT_CARD': 'Debit card'
             },
             massiveUploadButtonText: 'CSV upload',
             massiveUploadModalTitle: 'CSV merchandise upload',

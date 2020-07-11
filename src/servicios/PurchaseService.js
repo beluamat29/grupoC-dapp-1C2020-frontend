@@ -6,8 +6,13 @@ const PurchaseService = () => {
         return axios.post(`${SERVICE_URL}purchase`, body)
     }
 
+    const getUserPurchases = (userId) => {
+        return axios.get(`${SERVICE_URL}purchase/${userId}`)
+    }
+
     return {
-        confirmPurchase: confirmPurchase
+        confirmPurchase: confirmPurchase,
+        getUserPurchases: getUserPurchases
     }
 }
 

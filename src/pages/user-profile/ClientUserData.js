@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./user-profile.scss"
 import {LanguageContext} from "../../constants/LanguageMaps";
+import BillsOfUser from "./bills/BillsOfUser";
 
 class ClientUserData extends React.Component {
     render() {
@@ -29,6 +30,7 @@ class ClientUserData extends React.Component {
                                 onClick={this.props.openUpdateUserConfirmationModal}>{this.context.userProfileSave}</button>
                     </div>
                 </div>
+                <BillsOfUser userId={this.props.user.id}/>
             </div>
         )
     }
