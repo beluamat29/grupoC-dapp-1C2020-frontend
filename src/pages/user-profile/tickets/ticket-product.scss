@@ -25,10 +25,23 @@
       font-size: initial;
       display: flex;
       justify-content: space-between;
+
+      .name {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        overflow: hidden;
+      }
     }
 
     .ticket-product-brand {
       font-size: smaller;
+      span {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        overflow: hidden;
+      }
     }
 
     .ticket-product-footer {

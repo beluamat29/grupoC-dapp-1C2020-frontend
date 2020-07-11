@@ -30,7 +30,7 @@ class ClientUserData extends React.Component {
                                 onClick={this.props.openUpdateUserConfirmationModal}>{this.context.userProfileSave}</button>
                     </div>
                 </div>
-                <BillsOfUser/>
+                <BillsOfUser userId={this.props.user.id}/>
             </div>
         )
     }
