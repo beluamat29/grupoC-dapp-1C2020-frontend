@@ -93,9 +93,9 @@ export const LanguageMaps =
                 'SUNDAY': 'DOM'
             },
             paymentMethods: {
-                'Efectivo': 'Efectivo',
-                'Tarjeta de credito': 'Tarjeta de crédito',
-                'Tarjeta de debito': 'Tarjeta de débito'
+                'CASH': 'Efectivo',
+                'CREDIT_CARD': 'Tarjeta de crédito',
+                'DEBIT_CARD': 'Tarjeta de débito'
             },
             massiveUploadButtonText: 'Carga por CSV',
             massiveUploadModalTitle: 'Carga de productos por CSV',
@@ -193,9 +193,9 @@ export const LanguageMaps =
                 'SUNDAY': 'SUN'
             },
             paymentMethods: {
-                'Efectivo': 'Cash',
-                'Tarjeta de credito': 'Credit card',
-                'Tarjeta de debito': 'Debit card'
+                'CASH': 'Cash',
+                'CREDIT_CARD': 'Credit card',
+                'DEBIT_CARD': 'Debit card'
             },
             massiveUploadButtonText: 'CSV upload',
             massiveUploadModalTitle: 'CSV merchandise upload',

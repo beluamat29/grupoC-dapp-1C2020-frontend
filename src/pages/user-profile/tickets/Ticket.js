@@ -2,7 +2,7 @@ import * as React from "react";
 import {LanguageContext} from "../../../constants/LanguageMaps";
 import './ticket.scss'
 import TicketProduct from "./TicketProduct";
-import {faStore} from "@fortawesome/free-solid-svg-icons";
+import {faCalendarAlt, faMoneyCheckAlt, faStore} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const MIN_AMOUNT_OF_PRODUCTS_TO_SHOW = 3
 class Ticket extends React.Component {

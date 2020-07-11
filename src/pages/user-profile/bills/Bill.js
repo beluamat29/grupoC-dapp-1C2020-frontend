@@ -1,9 +1,10 @@
 import * as React from "react";
 import {LanguageContext} from "../../../constants/LanguageMaps";
 import './bill.scss'
-import {faStore} from "@fortawesome/free-solid-svg-icons";
+import {faStore, faMoneyCheckAlt, faCalendarAlt} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Ticket from "../tickets/Ticket";
+import moment from "moment";
 const MIN_AMOUNT_OF_TICKETS_TO_SHOW = 2;
 class Bill extends React.Component {
     constructor(props) {
@@ -30,6 +31,8 @@ class Bill extends React.Component {
     moreTicketsText = () => this.state.showingAllTickets ? this.context.showLessTickets : this.context.showMoreTickets
 
     parseStoresNames = () => this.props.bill.allTickets.map(ticket => ticket.ticketStore.storeName).join(', ')
+    parseDate = () => moment(this.props.bill.dateTime).format('DD-MM-YYYY').toString()
+    parsePaymentMethod = () => this.context.paymentMethods[this.props.bill.allTickets[0].paymentMethod]
 
     render() {
         return(
@@ -42,6 +45,17 @@ class Bill extends React.Component {
                     <FontAwesomeIcon icon={faStore}/>
                     <span>{this.parseStoresNames()}</span>
                 </div>
+                <div className="bill-payment-method-and-date">
+                    <div className="payment-method">
+                        <FontAwesomeIcon icon={faMoneyCheckAlt}/>
+                        <span>{this.parsePaymentMethod()}</span>
+                    </div>
+                    <div>
+                        <FontAwesomeIcon icon={faCalendarAlt}/>
+                        <span>{this.parseDate()}</span>
+                    </div>
+                </div>
+
                 {
                     this.state.ticketsToShow.map(ticket => <Ticket ticket={ticket}/>)
                 }

@@ -13,8 +13,22 @@
   .bill-stores {
     padding: 0 10px;
     height: auto;
+    color: coral;
     svg {
       margin-right: 5px;
+    }
+  }
+
+  .bill-payment-method-and-date {
+    padding: 0 10px;
+    display: flex;
+    height: auto;
+    svg {
+      margin-right: 5px;
+    }
+
+    .payment-method {
+      margin-right: 10px;
     }
   }
 
