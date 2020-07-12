@@ -13,6 +13,7 @@ import Categories from "./pages/homepage/category/Categories";
 import LoginService from "./servicios/LoginService";
 import UserProfile from "./pages/user-profile/UserProfile";
 
+
 class App extends React.Component {
     constructor(props) {
         super(props);

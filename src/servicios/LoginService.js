@@ -21,6 +21,15 @@ const LoginService = () => {
         return axios.post(`${SERVICE_URL}storeAdmin`, body)
     }
 
+    const registerFacebookUser = (facebookUser) => {
+        const body = {
+            username: facebookUser.email,
+            password: facebookUser.name,
+            address: ""
+        }
+        return axios.post(`${SERVICE_URL}facebookUser`, body)
+    }
+
     const getUserById = (id) => {
         return axios.get(`${SERVICE_URL}users/${id}`)
     }
@@ -34,7 +43,8 @@ const LoginService = () => {
         registerUser: registerUser,
         registerStoreUser: registerStoreUser,
         getUserById: getUserById,
-        updateUser: updateUser
+        updateUser: updateUser,
+        registerFacebookUser: registerFacebookUser
     }
 }
 
