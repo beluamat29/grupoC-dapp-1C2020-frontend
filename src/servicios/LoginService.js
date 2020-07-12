@@ -27,7 +27,6 @@ const LoginService = () => {
             password: facebookUser.name,
             address: ""
         }
-        debugger
         return axios.post(`${SERVICE_URL}facebookUser`, body)
     }
 

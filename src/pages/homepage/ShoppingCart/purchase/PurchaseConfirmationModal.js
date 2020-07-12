@@ -22,7 +22,7 @@ class PurchaseConfirmationModal extends React.Component{
     }
 
     confirmPurchase = () => {
-        if(!this.state.invalidDeliveryTime && !this.isEmptyAddress()) {
+        if(!this.state.invalidDeliveryTime && !this.validDelivery()) {
             this.setState({loadingPurchase: true, purchaseSucceed: false})
             const purchase = EntitiesBuilder().buildPurchase(this.props.products, this.state);
 
@@ -49,6 +49,8 @@ class PurchaseConfirmationModal extends React.Component{
     }
 
     isEmptyAddress = () => this.props.user.address === ''
+
+    validDelivery = () => !this.state.deliveryType === "STORE_PICKUP" && this.isEmptyAddress()
 
     render() {
         return(
