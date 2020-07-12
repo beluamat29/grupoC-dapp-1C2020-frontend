@@ -21,6 +21,7 @@ class UserProfile extends React.Component {
     }
 
     componentDidMount() {
+        debugger
         this.setState({loadingUser: true})
         const userId = this.props.match.params.id;
         LoginService().getUserById(userId)

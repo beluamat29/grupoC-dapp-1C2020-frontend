@@ -5,6 +5,7 @@ import ModalRegistroUsuario from "./modalRegistro/ModalRegistroUsuario";
 import LoginService from "../../servicios/LoginService";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
+import Facebook from "../../components/facebook/Facebook";
 
 class LoginPage extends React.Component {
     constructor(props) {
@@ -33,6 +34,20 @@ class LoginPage extends React.Component {
                 })
         }
     }
+
+    loginFacebookUser = (facebookUser) => {
+        debugger
+        LoginService().registerFacebookUser(facebookUser)
+            .then(response => {
+                this.props.onLogin(response.data)
+                this.props.history.push("/stores")
+            })
+            .catch(error => {
+                debugger
+                alert("Ocurrio un error, intentelo nuevamente")
+            })
+    }
+
 
     userIsValid = () => {
         this.setState({userFieldsError: (!this.state.username || !this.state.password) })
@@ -69,6 +84,7 @@ class LoginPage extends React.Component {
                             Hay campos sin completar.
                         </div>
                         }
+
                         <div className="button-panel">
                             <div className="login-button-field">
                                 <button className="login-button"
@@ -77,6 +93,10 @@ class LoginPage extends React.Component {
                             <div className="login-button-field">
                                 <button className="login-button" onClick={this.loginUser}>¡Vamos!</button>
                             </div>
+                            <div>
+                                <Facebook login={this.loginFacebookUser}/>
+                            </div>
+
                         </div>
 
                     </div>
