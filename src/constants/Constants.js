@@ -38,10 +38,10 @@ export const storeCategories = [{
         categoryImageURL: "https://lh3.googleusercontent.com/proxy/rsqniWM1mwffoqRuNvz7RIIPHY6SR5C4snPIBCZRj6nxi4sj1oE7WP5d1KkFre2F8AhhiBDJjuYxsUuDUxqlp5n8BFWOaMbTc1RCjcxSs1YHRwstcj43VglB1DcNrikGpv4  "
     }];
 
-export const paymentMethods = [{value: 'Efectivo', label: 'Efectivo'}, {
-    value: 'Tarjeta de Debito',
+export const paymentMethods = [{value: 'CASH', label: 'Efectivo'}, {
+    value: 'DEBIT_CARD',
     label: 'Tarjeta de Debito'
-}, {value: 'Tarjeta de Credito', label: 'Tarjeta de Credito'}];
+}, {value: 'CREDIT_CARD', label: 'Tarjeta de Credito'}];
 
 export const productCategories = [{value: 'CLEANING_SUPPLIES', label: 'Limpieza'},
     {value: 'GREENGROCER', label: 'Verduleria'},

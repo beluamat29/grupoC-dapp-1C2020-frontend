@@ -1,0 +1,41 @@
+.bill {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 15px 0;
+
+  .bill-header {
+    padding: 10px 10px 5px 10px;
+    font-size: large;
+    display: flex;
+    justify-content: space-between;
+  }
+  .bill-stores {
+    padding: 0 10px;
+    height: auto;
+    color: coral;
+    svg {
+      margin-right: 5px;
+    }
+  }
+
+  .bill-payment-method-and-date {
+    padding: 0 10px;
+    display: flex;
+    height: auto;
+    svg {
+      margin-right: 5px;
+    }
+
+    .payment-method {
+      margin-right: 10px;
+    }
+  }
+
+  .show-more-tickets {
+    text-align: center;
+    padding-bottom: 10px;
+    color: lightcoral;
+    text-decoration: underline;
+  }
+}
