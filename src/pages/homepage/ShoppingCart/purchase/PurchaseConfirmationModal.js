@@ -22,7 +22,7 @@ class PurchaseConfirmationModal extends React.Component{
     }
 
     confirmPurchase = () => {
-        if(!this.state.invalidDeliveryTime) {
+        if(!this.state.invalidDeliveryTime && !this.isEmptyAddress()) {
             this.setState({loadingPurchase: true, purchaseSucceed: false})
             const purchase = EntitiesBuilder().buildPurchase(this.props.products, this.state);
 
@@ -47,6 +47,9 @@ class PurchaseConfirmationModal extends React.Component{
         this.props.onFinish()
         this.props.onClose()
     }
+
+    isEmptyAddress = () => this.props.user.address === ''
+
     render() {
         return(
             <div className="modal">
@@ -126,6 +129,11 @@ class PurchaseConfirmationModal extends React.Component{
                                 {this.context.deliveryTimeError}
                             </div>
                             }
+                            {this.isEmptyAddress() &&
+                            <div className="time-error">
+                                <FontAwesomeIcon icon={faExclamationTriangle}/>
+                                {this.context.invalidAddress}
+                            </div>}
                         </div>
                         }
                         <div className="purchase-confirmation-field">

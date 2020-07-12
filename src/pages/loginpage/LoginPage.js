@@ -36,14 +36,12 @@ class LoginPage extends React.Component {
     }
 
     loginFacebookUser = (facebookUser) => {
-        debugger
         LoginService().registerFacebookUser(facebookUser)
             .then(response => {
                 this.props.onLogin(response.data)
                 this.props.history.push("/stores")
             })
             .catch(error => {
-                debugger
                 alert("Ocurrio un error, intentelo nuevamente")
             })
     }

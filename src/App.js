@@ -80,6 +80,7 @@ class App extends React.Component {
         localStorage.clear()
     }
 
+
     changeLanguage = (language) => this.setState({language: language})
 
     render() {
@@ -125,6 +126,7 @@ class App extends React.Component {
                                                                decreaseProductQuantity={this.decreaseProductQuantity}
                                                                increaseProductQuantity={this.increaseProductQuantity}
                                                                emptyCart={this.emptyCart}
+                                                               user={this.state.user}
                                 />}
                             />
                             <Route
@@ -136,7 +138,8 @@ class App extends React.Component {
                             <Route
                                 exact
                                 path="/users/:id"
-                                render={props => <UserProfile {...props} user={this.state.user}/>}
+                                render={props => <UserProfile {...props} user={this.state.user}
+                                                                         updateUser={this.logInUser}/>}
                             />
 
 
