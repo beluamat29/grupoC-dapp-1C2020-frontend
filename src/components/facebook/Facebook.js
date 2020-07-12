@@ -1,6 +1,6 @@
 import * as React from "react";
 import FacebookLogin from 'react-facebook-login';
-import LoginService from "../../servicios/LoginService";
+import {withRouter} from "react-router-dom";
 
 class Facebook extends React.Component{
     state = {
@@ -21,7 +21,7 @@ class Facebook extends React.Component{
             name: response.name,
             email: response.email,
             picture: response.picture.data.url
-        }, this.props.login(this.state)) ;
+        }, () => this.props.login(this.state)) ;
 
     }
 
@@ -29,7 +29,7 @@ class Facebook extends React.Component{
         let fbContent;
 
         if(this.state.isLoggedIn){
-           fbContent = null;
+           this.props.history.push("/stores")
         }else{
             fbContent= (
                 <FacebookLogin
@@ -48,4 +48,4 @@ class Facebook extends React.Component{
     }
 }
 
-export default Facebook;
+export default withRouter(Facebook);
