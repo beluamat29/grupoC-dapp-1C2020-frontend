@@ -88,14 +88,17 @@ class StoreProducts extends React.Component {
 
                         </div>
                     }
-                    {this.state.isAdminOfStore &&
-                    <button className="add-button"
-                            onClick={() => this.setState({addProductModalOpen: true})}>{this.context.addNewProductButton}</button>
-                    }
-                    {this.state.isAdminOfStore &&
-                    <button className="add-button"
-                            onClick={() => this.setState({massiveCSVuploadModalOpen: true})}>{this.context.massiveUploadButtonText}</button>
-                    }
+                    <div className="add-products-button">
+                        {this.state.isAdminOfStore &&
+                        <button className="add-button"
+                                onClick={() => this.setState({addProductModalOpen: true})}>{this.context.addNewProductButton}</button>
+                        }
+                        {this.state.isAdminOfStore &&
+                        <button className="add-button"
+                                onClick={() => this.setState({massiveCSVuploadModalOpen: true})}>{this.context.massiveUploadButtonText}</button>
+                        }
+                    </div>
+
                 </div>
                 {this.state.addProductModalOpen && <AddProductModal onClose={this.closeModal}
                                                                     storeId={this.state.storeId}

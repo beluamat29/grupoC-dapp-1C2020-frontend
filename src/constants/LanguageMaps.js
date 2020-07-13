@@ -108,7 +108,7 @@ export const LanguageMaps =
             addProducts: 'My store',
             discounts: 'Discount',
             seeMyCart: 'My shopping cart',
-            empryCart: 'Empty Cart',
+            emptyCart: 'Empty Cart',
             logOut: 'Log out',
             sideBarTitle: 'Find your products',
             saveProductSucceed: 'Your product has been saved successfully',

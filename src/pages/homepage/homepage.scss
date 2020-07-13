@@ -50,6 +50,21 @@
     }
   }
 
+  .no-products {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+    color: #cbb408;
+
+    svg {
+      height: 100px;
+      width: 100px;
+    }
+  }
+
   .entities-panel {
     width: 100%;
 
@@ -70,20 +85,6 @@
       height: 100%;
     }
 
-    .no-products {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: x-large;
-      color: #cbb408;
-
-      svg {
-        height: 100px;
-        width: 100px;
-      }
-    }
     .entities {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -230,6 +231,14 @@
             margin: 0 5px 5px 0;
           }
         }
+      }
+    }
+
+    .add-products-button {
+      width: 100%;
+      text-align: center;
+      .add-button {
+        margin: 5px;
       }
     }
   }

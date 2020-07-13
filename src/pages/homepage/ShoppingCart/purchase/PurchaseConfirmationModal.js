@@ -57,7 +57,7 @@ class PurchaseConfirmationModal extends React.Component{
                         <button className="delete" aria-label="close" onClick={this.props.onClose}/>
                     </header>
                     { !this.state.loadingPurchase && !this.state.purchaseSucceed &&
-                    <div className="modal-card-body">
+                    <div className="modal-card-body purchase-confirmation-modal">
                         <div className="purchase-confirmation-field">
                             <label className="purchase-confirmation-field-title">
                                 {this.context.purchaseConfirmationPaymentMethod}

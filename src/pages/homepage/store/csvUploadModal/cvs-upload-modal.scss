@@ -1,26 +1,32 @@
 .modal {
   .modal-card {
     width: 50%;
-  }
 
-  .modal-card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    .csv-information {
-      text-align: center;
-      max-width: 100%;
-      margin-bottom: 15px;
-    }
-
-    .csv-reader {
+    .modal-card-body {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+
+      .csv-container {
+        text-align: center;
+      }
+
+      .csv-information {
+        text-align: center;
+        max-width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .csv-reader {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+      }
     }
   }
+
 
   .modal-card-foot {
     display: flex;

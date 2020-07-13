@@ -1,7 +1,10 @@
 .modal {
   .modal-card {
     .modal-card-body {
-      flex-direction: column;
+      flex-direction: row;
+      &.purchase-confirmation-modal {
+        flex-direction: column;
+      }
 
       .success-icon {
         svg {
