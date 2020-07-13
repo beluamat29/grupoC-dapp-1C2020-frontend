@@ -24,7 +24,10 @@ class UserProfile extends React.Component {
         this.setState({loadingUser: true})
         const userId = this.props.match.params.id;
         LoginService().getUserById(userId)
-            .then(response => this.setState({user: response.data, loadingUser: false}))
+            .then(response => {
+                this.setState({user: response.data, loadingUser: false})
+                this.props.updateUser(response.data)
+            })
             .catch(error => console.log(error))
     }
 

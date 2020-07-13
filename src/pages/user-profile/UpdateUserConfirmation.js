@@ -15,6 +15,13 @@ class UpdateUserConfirmation extends React.Component {
         }
     }
 
+    componentDidMount() {
+        if(this.props.user.isFacebookUser){
+            LoginService().updateUser(this.props.user)
+                .then(response => this.setState({userUpdateSucceed: true, userUpdateFailed: false}))
+                .catch(() => this.setState({userUpdateFailed: true, userUpdateSucceed: false}))
+        }
+    }
 
     validateAndUpdateUser = () => {
         LoginService().validateUser({username: this.props.user.username, password: this.state.passwordToConfirm})
