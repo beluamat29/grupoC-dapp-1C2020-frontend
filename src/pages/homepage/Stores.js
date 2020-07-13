@@ -54,7 +54,7 @@ class Stores extends React.Component {
     }
 
     parseCategory = () => (this.context.storeCategories[this.state.category]).toLocaleLowerCase();
-    getStoresTitleText = () => !!this.state.category ? 'Estos son los comercios de la categoria ' + this.parseCategory(this.state.category) : 'Estos son nuestros comercios'
+    getStoresTitleText = () => !!this.state.category ? this.context.storesOfCategory + this.parseCategory(this.state.category) : this.context.ourStores
 
     updateEntitiesSearch = (filterText) => {
         let filteredStoresWithText = this.state.stores.filter(store => store.storeName.toLocaleLowerCase().includes(filterText.toLocaleLowerCase()))
