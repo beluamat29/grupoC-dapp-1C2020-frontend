@@ -76,7 +76,7 @@ class App extends React.Component {
         }
     }
     logOut = () => {
-        this.setState({loggedUser: false})
+        this.setState({loggedUser: false, productsInCart: []})
         localStorage.clear()
     }
 
