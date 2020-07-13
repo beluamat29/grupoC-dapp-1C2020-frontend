@@ -232,5 +232,13 @@
         }
       }
     }
+
+    .add-products-button {
+      width: 100%;
+      text-align: center;
+      .add-button {
+        margin: 5px;
+      }
+    }
   }
 }
