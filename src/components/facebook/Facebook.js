@@ -1,6 +1,7 @@
 import * as React from "react";
-import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import {withRouter} from "react-router-dom";
+import FacebookButton from "./FacebookButton";
 
 class Facebook extends React.Component{
     state = {
@@ -37,7 +38,10 @@ class Facebook extends React.Component{
                     autoLoad={true}
                     fields="name,email,picture"
                     onClick={this.componentClicked}
-                    callback={this.responseFacebook} />
+                    callback={this.responseFacebook}
+                    render={renderProps => (
+                        <FacebookButton onClick={renderProps.onClick}/>
+                    )}/>
             );
         }
         return(

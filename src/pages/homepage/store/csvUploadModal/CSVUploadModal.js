@@ -50,18 +50,20 @@ class CSVUploadModal extends React.Component {
                         <button className="delete" aria-label="close" onClick={this.props.onClose}/>
                     </header>
                     <div className="modal-card-body">
-                        <div className="csv-information">
-                            <span>{this.context.massiveUploadDescriptionText}</span>
-                        </div>
-                        <div>
-                            <CSVReader
-                                cssClass="csv-reader"
-                                label="Selecciona un archivo"
-                                onFileLoad={this.handleOnFileLoad}
-                                addRemoveButton
-                                inputId="ObiWan"
-                                inputStyle={{color: 'black'}}
-                                onFileLoaded={this.handleOnFileLoad}/>
+                        <div className="csv-container">
+                            <div className="csv-information">
+                                <span>{this.context.massiveUploadDescriptionText}</span>
+                            </div>
+                            <div>
+                                <CSVReader
+                                    cssClass="csv-reader"
+                                    label="Selecciona un archivo"
+                                    onFileLoad={this.handleOnFileLoad}
+                                    addRemoveButton
+                                    inputId="ObiWan"
+                                    inputStyle={{color: 'black'}}
+                                    onFileLoaded={this.handleOnFileLoad}/>
+                            </div>
                         </div>
                     </div>
                     <footer className="modal-card-foot">
