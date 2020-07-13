@@ -72,13 +72,13 @@ class Stores extends React.Component {
                             {this.state.filteredStores.map(store => this.renderStore(store))}
                         </div>
                     }
-                    {!this.state.dataToShow && !this.state.loadingEntitiesState &&
-                    <div className="no-products">
-                        <FontAwesomeIcon icon={faStoreSlash}/>
-                        <span>{this.context.noStores}</span>
-                    </div>
-                    }
                 </div>
+                {!this.state.dataToShow && !this.state.loadingEntitiesState &&
+                <div className="no-products">
+                    <FontAwesomeIcon icon={faStoreSlash}/>
+                    <span>{this.context.noStores}</span>
+                </div>
+                }
             </div>
         )
     }

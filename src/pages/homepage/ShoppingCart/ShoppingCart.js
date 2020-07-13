@@ -63,8 +63,10 @@ class ShoppingCart extends React.Component{
             {!this.cartIsEmpty() &&
             <div className="shopping-cart-content">
                 <div className="shopping-cart-total">
-                    <button className="empty-cart" onClick={this.openEmptyCartModal}>{this.context.emptyCart}</button>
-                    <button className="empty-cart" onClick={this.openPurchaseConfirmationModal}>{this.context.startPurchase}</button>
+                    <div>
+                        <button className="empty-cart" onClick={this.openEmptyCartModal}>{this.context.emptyCart}</button>
+                        <button className="empty-cart" onClick={this.openPurchaseConfirmationModal}>{this.context.startPurchase}</button>
+                    </div>
                     <span>Total:  $ {this.calculateTotalPrice()}</span>
                 </div>
                 {this.renderProductsInCart()}
