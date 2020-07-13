@@ -67,12 +67,12 @@ class App extends React.Component {
     emptyCart = () => this.setState({productsInCart: []})
 
     logInUser = (aUser) => {
-        this.setState({loggedUser: true, user: aUser})
         localStorage.setItem('loggedUser', true)
         localStorage.setItem('userId', aUser.id);
+        this.setState({loggedUser: true, loggedStoreAdmin: false, user: aUser, userId: JSON.parse(localStorage.getItem('userId'))})
         if(aUser.isStoreAdmin){
-            this.setState({loggedStoreAdmin: true})
             localStorage.setItem('storeId', aUser.store.id)
+            this.setState({loggedStoreAdmin: true, storeId: JSON.parse(localStorage.getItem('storeId')) || false})
         }
     }
     logOut = () => {
