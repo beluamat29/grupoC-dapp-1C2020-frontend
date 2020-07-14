@@ -3,12 +3,16 @@ import * as React from "react";
 import './cvs-upload-modal.scss'
 import CSVReader from 'react-csv-reader';
 import StoreService from "../../../../servicios/StoreService";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCheckCircle, faTimesCircle} from "@fortawesome/free-solid-svg-icons";
 
 class CSVUploadModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            productsToAdd: []
+            productsToAdd: [],
+            csvUploadSucceed: false,
+            csvUploadFailed: false
         }
     }
     handleOnFileLoad = (data) => {
@@ -37,9 +41,15 @@ class CSVUploadModal extends React.Component {
             merchandiseList: this.state.productsToAdd
         }
         StoreService().addProductsInBatch(body)
-            .then(() => this.props.onClose())
+            .then(() => {
+                this.setState({csvUploadSucceed: true, csvUploadFailed: false})
+            })
+            .catch(() => {
+                this.setState({csvUploadSucceed: false, csvUploadFailed: true})
+            })
     }
 
+    resetUpload = () => this.setState({csvUploadSucceed: false, csvUploadFailed: false})
     render() {
         return(
             <div className="modal">
@@ -50,24 +60,43 @@ class CSVUploadModal extends React.Component {
                         <button className="delete" aria-label="close" onClick={this.props.onClose}/>
                     </header>
                     <div className="modal-card-body">
-                        <div className="csv-container">
-                            <div className="csv-information">
-                                <span>{this.context.massiveUploadDescriptionText}</span>
+                        { !this.state.csvUploadFailed && !this.state.csvUploadSucceed &&
+                            <div className="csv-container">
+                                <div className="csv-information">
+                                    <span>{this.context.massiveUploadDescriptionText}</span>
+                                </div>
+                                <div>
+                                    <CSVReader
+                                        cssClass="csv-reader"
+                                        label="Selecciona un archivo"
+                                        onFileLoad={this.handleOnFileLoad}
+                                        addRemoveButton
+                                        inputId="ObiWan"
+                                        inputStyle={{color: 'black'}}
+                                        onFileLoaded={this.handleOnFileLoad}/>
+                                </div>
                             </div>
-                            <div>
-                                <CSVReader
-                                    cssClass="csv-reader"
-                                    label="Selecciona un archivo"
-                                    onFileLoad={this.handleOnFileLoad}
-                                    addRemoveButton
-                                    inputId="ObiWan"
-                                    inputStyle={{color: 'black'}}
-                                    onFileLoaded={this.handleOnFileLoad}/>
+                        }
+                        {
+                            this.state.csvUploadSucceed && !this.state.csvUploadFailed &&
+                            <div className="csv-success">
+                                <FontAwesomeIcon icon={faCheckCircle}/>
+                                <span>{this.context.csvUploadSucceed}</span>
                             </div>
-                        </div>
+                        }
+                        {
+                            this.state.csvUploadFailed && !this.state.csvUploadSucceed &&
+                            <div className="csv-failed">
+                                <FontAwesomeIcon icon={faTimesCircle}/>
+                                <span>{this.context.csvUploadFailed}</span>
+                            </div>
+                        }
                     </div>
                     <footer className="modal-card-foot">
-                        <button className="upload-button" onClick={this.addProductsInBatch}>{this.context.massiveUploadConfirmationButton}</button>
+                        {!this.state.csvUploadFailed && !this.state.csvUploadSucceed && <button className="upload-button" onClick={this.addProductsInBatch}>{this.context.massiveUploadConfirmationButton}</button>}
+                        {this.state.csvUploadFailed && !this.state.csvUploadSucceed && <button className="upload-button" onClick={this.resetUpload}>{this.context.csvRetryButton}</button>}
+                        {!this.state.csvUploadFailed && this.state.csvUploadSucceed && <button className="upload-button" onClick={this.props.onClose}>{this.context.gotItButton}</button>}
+
                     </footer>
                 </div>
             </div>

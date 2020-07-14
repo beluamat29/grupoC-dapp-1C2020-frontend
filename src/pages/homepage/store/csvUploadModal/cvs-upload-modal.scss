@@ -8,6 +8,30 @@
       justify-content: center;
       align-items: center;
 
+      .csv-success {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        svg {
+          height: 75px;
+          width: 75px;
+          color: #93d42f;
+        }
+      }
+
+      .csv-failed {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        svg {
+          height: 75px;
+          width: 75px;
+          color: #ff0020;
+        }
+      }
+
       .csv-container {
         text-align: center;
       }

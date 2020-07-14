@@ -64,6 +64,9 @@ export const LanguageMaps =
             purchasePaymentMethodCreditCard: 'Tarjeta de cŕedito',
             purchasePaymentMethodDebitCard: 'Tarjeta de débito',
             purchaseDeliveryType: 'Tipo de envio',
+            csvUploadSucceed: '¡Tus productos se cargaron!',
+            csvUploadFailed: '¡Ups! Parece que la carga falló. Por favor revisa que tu archivo respete el formato pedido y que no tenga productos repetidos',
+            csvRetryButton: 'Reintentar',
             homeDelivery: 'Envío a domicilio',
             pickupDelivery: 'Retiro por local',
             invalidAddress: 'Parece que no tienes una direccion resgistrada. Por favor actualiza tu direccion en tu perfil de usuario para poder continuar.',
@@ -169,6 +172,7 @@ export const LanguageMaps =
             purchaseDeliveryType: 'Delivery type',
             homeDelivery: 'Home delivery',
             pickupDelivery: 'Store pick up',
+            csvRetryButton: 'Retry',
             invalidAddress: 'Seems that you do not have an address set. Please update your address in your user profile to continue',
             confirmPurchaseButton: 'Confirm purchase',
             deliveryTimeSelection: 'Delivery time',
@@ -206,6 +210,8 @@ export const LanguageMaps =
             massiveUploadButtonText: 'CSV upload',
             massiveUploadModalTitle: 'CSV merchandise upload',
             massiveUploadConfirmationButton: 'Upload',
+            csvUploadSucceed: 'Your products have been uploaded!',
+            csvUploadFailed: 'Ups! Seems that the upload failed. Please check your csv file format and check it does not contain duplicated products',
             massiveUploadDescriptionText: 'Here you can make CSV merchandise uploads. Each row should have the format product name, product brand, price, stock and sotck image URL.'
         }
     }
