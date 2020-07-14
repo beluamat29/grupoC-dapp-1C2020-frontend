@@ -19,6 +19,13 @@ class ClientUserData extends React.Component {
                                onChange={(event) => this.props.updateUserField('address', event.target.value)}
                         />
                     </div>
+                    <div className="user-profile-data-input">
+                        <label>{this.context.userProfileMoneyLimit}</label>
+                        <input type="text" id="user-address" name="user-address"
+                               value={this.props.user.moneyLimit}
+                               onChange={(event) => this.props.updateUserField('moneyLimit', event.target.value)}
+                        />
+                    </div>
                     {!this.props.user.isFacebookUser &&
                         <div className="user-profile-data-input">
                             <label>{this.context.password}</label>

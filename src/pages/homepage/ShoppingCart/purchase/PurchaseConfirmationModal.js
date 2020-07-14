@@ -9,7 +9,7 @@ import ModalOperationSucceedMessage from "../../store/addProductModal/ModalOpera
 import LoadingSpinner from "../../../../components/loading-spinner/LoadingSpinner";
 import moment from "moment";
 
-class PurchaseConfirmationModal extends React.Component{
+class PurchaseConfirmationModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,7 +22,7 @@ class PurchaseConfirmationModal extends React.Component{
     }
 
     confirmPurchase = () => {
-        if(!this.state.invalidDeliveryTime && !this.validDelivery()) {
+        if (!this.state.invalidDeliveryTime && !this.validDelivery()) {
             this.setState({loadingPurchase: true, purchaseSucceed: false})
             const purchase = EntitiesBuilder().buildPurchase(this.props.products, this.state);
 
@@ -37,8 +37,8 @@ class PurchaseConfirmationModal extends React.Component{
     updateDeliveryDateTime = (dateTime) => {
         const momentDateTime = moment(dateTime)
         let tomorrow = moment().add(1, 'd');
-        const minimumTime = moment(dateTime).set({ hour: parseInt(8, 10), minute: parseInt(0, 10) })
-        const maximumTime = moment(dateTime).set({ hour: parseInt(18, 10), minute: parseInt(0, 10) })
+        const minimumTime = moment(dateTime).set({hour: parseInt(8, 10), minute: parseInt(0, 10)})
+        const maximumTime = moment(dateTime).set({hour: parseInt(18, 10), minute: parseInt(0, 10)})
         let invalidDateTime = tomorrow.isAfter(momentDateTime) || !momentDateTime.isBetween(minimumTime, maximumTime);
         this.setState({deliveryDateTime: dateTime, invalidDeliveryTime: invalidDateTime})
     }
@@ -53,7 +53,7 @@ class PurchaseConfirmationModal extends React.Component{
     validDelivery = () => !this.state.deliveryType === "STORE_PICKUP" && this.isEmptyAddress()
 
     render() {
-        return(
+        return (
             <div className="modal">
                 <div className="modal-background"/>
                 <div className="modal-card">
@@ -61,7 +61,7 @@ class PurchaseConfirmationModal extends React.Component{
                         <p className="modal-card-title">{this.context.confirmPurchaseModalTitle}</p>
                         <button className="delete" aria-label="close" onClick={this.props.onClose}/>
                     </header>
-                    { !this.state.loadingPurchase && !this.state.purchaseSucceed &&
+                    {!this.state.loadingPurchase && !this.state.purchaseSucceed &&
                     <div className="modal-card-body purchase-confirmation-modal">
                         <div className="purchase-confirmation-field">
                             <label className="purchase-confirmation-field-title">
@@ -69,7 +69,8 @@ class PurchaseConfirmationModal extends React.Component{
                             </label>
                             <div className="payment-methods">
                                 <div className="payment-method">
-                                    <input type="radio" id="cash" name="cash" value={"CASH"} checked={this.state.paymentMethod === "CASH"}
+                                    <input type="radio" id="cash" name="cash" value={"CASH"}
+                                           checked={this.state.paymentMethod === "CASH"}
                                            onChange={() => this.updatePaymentMethod("CASH")}
                                     />
                                     <label>
@@ -77,7 +78,8 @@ class PurchaseConfirmationModal extends React.Component{
                                     </label>
                                 </div>
                                 <div className="payment-method">
-                                    <input type="radio" id="credit-card" name="credit-card" value={"CREDIT_CARD"} checked={this.state.paymentMethod === "CREDIT_CARD"}
+                                    <input type="radio" id="credit-card" name="credit-card" value={"CREDIT_CARD"}
+                                           checked={this.state.paymentMethod === "CREDIT_CARD"}
                                            onChange={() => this.updatePaymentMethod("CREDIT_CARD")}
                                     />
                                     <label>
@@ -85,7 +87,8 @@ class PurchaseConfirmationModal extends React.Component{
                                     </label>
                                 </div>
                                 <div className="payment-method">
-                                    <input type="radio" id="debot-card" name="debit-card" value={"DEBIT_CARD"} checked={this.state.paymentMethod === "DEBIT_CARD"}
+                                    <input type="radio" id="debot-card" name="debit-card" value={"DEBIT_CARD"}
+                                           checked={this.state.paymentMethod === "DEBIT_CARD"}
                                            onChange={() => this.updatePaymentMethod("DEBIT_CARD")}
                                     />
                                     <label>
@@ -100,7 +103,8 @@ class PurchaseConfirmationModal extends React.Component{
                             </label>
                             <div className="payment-methods">
                                 <div className="payment-method">
-                                    <input type="radio" id="home-delivery" name="home-delivery" value={"HOME_DELIVERY"} checked={this.state.deliveryType === "HOME_DELIVERY"}
+                                    <input type="radio" id="home-delivery" name="home-delivery" value={"HOME_DELIVERY"}
+                                           checked={this.state.deliveryType === "HOME_DELIVERY"}
                                            onChange={() => this.updateDeliveryType("HOME_DELIVERY")}
                                     />
                                     <label>
@@ -108,7 +112,8 @@ class PurchaseConfirmationModal extends React.Component{
                                     </label>
                                 </div>
                                 <div className="payment-method">
-                                    <input type="radio" id="store-pickup" name="store-pickup" value={"STORE_PICKUP"} checked={this.state.deliveryType === "STORE_PICKUP"}
+                                    <input type="radio" id="store-pickup" name="store-pickup" value={"STORE_PICKUP"}
+                                           checked={this.state.deliveryType === "STORE_PICKUP"}
                                            onChange={() => this.updateDeliveryType("STORE_PICKUP")}
                                     />
                                     <label>
@@ -143,6 +148,14 @@ class PurchaseConfirmationModal extends React.Component{
                                 <span>{this.context.purchaseTotalPrice} ${this.props.total}</span>
                             </div>
                         </div>
+                        {this.props.total > this.props.user.moneyLimit &&
+                        <div className="purchase-confirmation-field">
+                            <div className="time-error align-center">
+                                <FontAwesomeIcon icon={faExclamationTriangle}/>
+                                {this.context.moneyLimitWarning}
+                            </div>
+                        </div>
+                        }
                     </div>
                     }
                     {!this.state.loadingPurchase && this.state.purchaseSucceed &&
@@ -153,8 +166,10 @@ class PurchaseConfirmationModal extends React.Component{
                         <div className="modal-card-body"><LoadingSpinner isLoading={this.state.loadingPurchase}/></div>
                     }
                     <footer className="modal-card-foot">
-                        {!this.state.purchaseSucceed && <button className="purchase-button" onClick={this.confirmPurchase}>{this.context.confirmPurchaseButton}</button>}
-                        {this.state.purchaseSucceed && <button className="purchase-button" onClick={this.finishPurchase}>OK</button>}
+                        {!this.state.purchaseSucceed && <button className="purchase-button"
+                                                                onClick={this.confirmPurchase}>{this.context.confirmPurchaseButton}</button>}
+                        {this.state.purchaseSucceed &&
+                        <button className="purchase-button" onClick={this.finishPurchase}>OK</button>}
                     </footer>
                 </div>
             </div>

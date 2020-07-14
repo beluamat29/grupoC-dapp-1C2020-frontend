@@ -4,6 +4,8 @@ import ShoppingCartProduct from "./ShoppingCartProduct";
 import {LanguageContext} from "../../../constants/LanguageMaps";
 import EmptyCartConfirmation from "./EmptyCartConfirmation";
 import PurchaseConfirmationModal from "./purchase/PurchaseConfirmationModal";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
 
 class ShoppingCart extends React.Component{
     constructor(props) {
