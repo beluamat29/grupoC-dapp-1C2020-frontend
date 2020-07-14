@@ -42,7 +42,11 @@
 
           svg {
             color: #ff0020;
-            margin-right: 3px;
+            margin-right: 5px;
+          }
+          &.align-center {
+            text-align: center;
+            font-size: larger;
           }
         }
         .purchase-confirmation-field-title {
