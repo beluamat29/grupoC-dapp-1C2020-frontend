@@ -79,6 +79,7 @@ class ShoppingCart extends React.Component{
                                                                                 total={this.calculateTotalPrice()}
                                                                                 products={this.props.productsInCart}
                                                                                 onFinish={this.emptyCartAfterPurchase}
+                                                                                user={this.props.user}
             />}
 
         </>;

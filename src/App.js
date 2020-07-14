@@ -67,18 +67,19 @@ class App extends React.Component {
     emptyCart = () => this.setState({productsInCart: []})
 
     logInUser = (aUser) => {
-        this.setState({loggedUser: true, user: aUser})
         localStorage.setItem('loggedUser', true)
         localStorage.setItem('userId', aUser.id);
+        this.setState({loggedUser: true, loggedStoreAdmin: false, user: aUser, userId: JSON.parse(localStorage.getItem('userId'))})
         if(aUser.isStoreAdmin){
-            this.setState({loggedStoreAdmin: true})
             localStorage.setItem('storeId', aUser.store.id)
+            this.setState({loggedStoreAdmin: true, storeId: JSON.parse(localStorage.getItem('storeId')) || false})
         }
     }
     logOut = () => {
-        this.setState({loggedUser: false})
+        this.setState({loggedUser: false, productsInCart: []})
         localStorage.clear()
     }
+
 
     changeLanguage = (language) => this.setState({language: language})
 
@@ -125,6 +126,7 @@ class App extends React.Component {
                                                                decreaseProductQuantity={this.decreaseProductQuantity}
                                                                increaseProductQuantity={this.increaseProductQuantity}
                                                                emptyCart={this.emptyCart}
+                                                               user={this.state.user}
                                 />}
                             />
                             <Route
@@ -136,7 +138,8 @@ class App extends React.Component {
                             <Route
                                 exact
                                 path="/users/:id"
-                                render={props => <UserProfile {...props} user={this.state.user}/>}
+                                render={props => <UserProfile {...props} user={this.state.user}
+                                                                         updateUser={this.logInUser}/>}
                             />
 
 

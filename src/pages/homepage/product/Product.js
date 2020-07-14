@@ -13,6 +13,10 @@ class Product extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.setState({isAdminOfStore: this.props.isAdminOfStore})
+    }
+
     addProductToCart = () => {
         this.setState({wasAddedToCart: true})
         this.props.onAddToCart(this.props.product)
@@ -64,7 +68,7 @@ class Product extends React.Component {
                         <p className="price">${this.props.product.price}</p>
                     </div>
                     <div>
-                        {this.props.isAdminOfStore &&
+                        {this.state.isAdminOfStore &&
                         <div className="edit-button">
                             <button onClick={this.editProduct}>
                                 <span>Editar</span>
